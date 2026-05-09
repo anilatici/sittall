@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found – SitTall - Fix Your Posture</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-dark: #0b1822;
+      --teal: #6ec9c1;
+      --text: #edf2f5;
+      --text-mid: #7b9fb0;
+      --text-dim: #364e5e;
+      --border: rgba(255,255,255,0.07);
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      -webkit-font-smoothing: antialiased;
+    }
+    .num {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(6rem, 20vw, 10rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--teal);
+      line-height: 1;
+      opacity: 0.35;
+    }
+    h1 {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 400;
+      margin-top: 1rem;
+      line-height: 1.1;
+    }
+    p {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 380px;
+      line-height: 1.7;
+    }
+    .links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 9px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.8; }
+    .btn-primary {
+      background: var(--teal);
+      color: #0b1822;
+    }
+    .btn-ghost {
+      border: 1px solid var(--border);
+      color: var(--text-mid);
+    }
+    footer {
+      position: fixed;
+      bottom: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="num">404</div>
+  <h1>Page not found.</h1>
+  <p>The page you're looking for doesn't exist or has been moved.</p>
+  <div class="links">
+    <a href="/" class="btn btn-primary">Go home</a>
+    <a href="/support.html" class="btn btn-ghost">Support</a>
+  </div>
+  <footer>© 2026 sittall.app</footer>
+</body>
+</html>

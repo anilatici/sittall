@@ -1,0 +1,489 @@
+/* ─── Reset ─── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ─── Custom Properties ─── */
+:root {
+    --bg: #FAFAF7;
+    --text: #1D1D1F;
+    --text-muted: #6E6E73;
+    --link: #0066CC;
+    --border: #E5E5E5;
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+
+    --font-serif: ui-serif, "New York", "Charter", "Iowan Old Style", "Source Serif 4", Georgia, serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+
+    --section-pad-y: 120px;
+    --content-max: 1120px;
+    --content-pad: 48px;
+}
+
+/* ─── Base ─── */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Nav ─── */
+.nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 250, 247, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--content-pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+}
+
+.nav-wordmark {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+}
+
+.nav-wordmark:hover {
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.nav-download {
+    color: var(--link) !important;
+}
+
+/* ─── Section base ─── */
+.section {
+    padding: var(--section-pad-y) 0;
+}
+
+.section-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--content-pad);
+}
+
+.section-narrow {
+    max-width: 720px;
+}
+
+.section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--text);
+}
+
+.section p {
+    color: var(--text-muted);
+}
+
+/* ─── Hero ─── */
+.hero {
+    padding: 80px 0 var(--section-pad-y);
+}
+
+.hero-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--content-pad);
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+}
+
+.hero h1 em {
+    font-style: italic;
+}
+
+.hero-sub {
+    margin-top: 20px;
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.6;
+}
+
+.hero-cta {
+    margin-top: 32px;
+}
+
+.mas-badge {
+    height: 40px;
+    width: auto;
+}
+
+.hero-req {
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* ─── Demo ─── */
+.demo {
+    border-top: 1px solid var(--border);
+}
+
+.demo h2 {
+    margin-bottom: 32px;
+}
+
+.demo-video video {
+    width: 100%;
+    border-radius: 8px;
+    background: #000;
+    box-shadow: var(--shadow);
+}
+
+/* ─── How it works ─── */
+.how {
+    border-top: 1px solid var(--border);
+}
+
+.how h2 {
+    margin-bottom: 48px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+}
+
+.step {
+    position: relative;
+}
+
+.step-number {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.step img {
+    width: 100%;
+    min-width: 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+}
+
+.step p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ─── Features prose ─── */
+.features {
+    border-top: 1px solid var(--border);
+}
+
+.features-prose {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 640px;
+}
+
+.features-bullets {
+    margin-top: 24px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: 0.01em;
+}
+
+/* ─── Privacy ─── */
+.privacy {
+    border-top: 1px solid var(--border);
+}
+
+.privacy p {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 640px;
+}
+
+/* ─── Requirements ─── */
+.requirements {
+    border-top: 1px solid var(--border);
+}
+
+.req-block {
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--text);
+    background: none;
+    border: none;
+    margin-top: 8px;
+    white-space: pre-wrap;
+}
+
+/* ─── FAQ ─── */
+.faq {
+    border-top: 1px solid var(--border);
+}
+
+.faq h2 {
+    margin-bottom: 32px;
+}
+
+.faq details {
+    border-bottom: 1px solid var(--border);
+}
+
+.faq details:first-of-type {
+    border-top: 1px solid var(--border);
+}
+
+.faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq summary::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(-45deg);
+    transition: transform 200ms ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+.faq details[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq details p {
+    padding: 0 0 20px;
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 640px;
+}
+
+/* ─── Footer ─── */
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 0;
+}
+
+.footer-inner {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--content-pad);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-copy {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+}
+
+.footer-links {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-links a {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: var(--text);
+}
+
+/* ─── Scroll reveal ─── */
+.fade-up {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+    :root {
+        --section-pad-y: 80px;
+        --content-pad: 32px;
+    }
+
+    .hero {
+        padding-top: 48px;
+    }
+
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .hero-image {
+        order: -1;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .step img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    :root {
+        --section-pad-y: 64px;
+        --content-pad: 24px;
+    }
+
+    .nav-inner {
+        height: 48px;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .hero {
+        padding-top: 32px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .fade-up {
+        opacity: 1;
+        transform: none;
+    }
+}

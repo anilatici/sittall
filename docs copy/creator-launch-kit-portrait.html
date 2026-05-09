@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creator Launch Kit PDF – SitTall - Fix Your Posture</title>
+  <meta name="description" content="Portrait A4 creator launch kit for SitTall - Fix Your Posture. Print-ready PDF layout for gifted-first outreach with approved positioning, screenshots, and contact details.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --ink: #122230;
+      --ink-soft: #4a6171;
+      --line: rgba(18,34,48,0.1);
+      --line-strong: rgba(18,34,48,0.18);
+      --paper: #f7f3ed;
+      --paper-deep: #f3ede5;
+      --white: #ffffff;
+      --sea: #6fc9c2;
+      --sea-deep: #2f8b86;
+      --mist: #e8eff2;
+      --gold: #d9b061;
+      --shadow: 0 22px 55px rgba(18,34,48,0.09);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(111,201,194,0.16), transparent 24%),
+        linear-gradient(180deg, #eef3f4 0%, #f7f3ed 48%, #f2ece3 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: 'Cormorant', serif;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 0.98;
+    }
+
+    p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .print-note {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 1.2rem;
+      background: rgba(247,243,237,0.9);
+      border-bottom: 1px solid rgba(18,34,48,0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .print-note strong {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .print-note span {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .folio {
+      width: min(210mm, calc(100% - 1.5rem));
+      margin: 1.1rem auto 3rem;
+    }
+
+    .sheet {
+      position: relative;
+      min-height: 273mm;
+      margin: 0 auto 1rem;
+      padding: 14mm;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.92), rgba(247,243,237,0.86)),
+        var(--white);
+      border: 1px solid rgba(255,255,255,0.95);
+      border-radius: 8mm;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .sheet:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+
+    .sheet::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 82mm;
+      background:
+        radial-gradient(circle at top left, rgba(111,201,194,0.22), transparent 42%),
+        linear-gradient(135deg, rgba(233,240,243,0.9), rgba(247,243,237,0));
+      pointer-events: none;
+    }
+
+    .sheet-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4.5mm;
+      height: 100%;
+    }
+
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8mm;
+      padding-bottom: 4mm;
+      border-bottom: 1px solid rgba(18,34,48,0.08);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 3.5mm;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 10mm;
+      height: 10mm;
+      border-radius: 3mm;
+      box-shadow: 0 6px 16px rgba(18,34,48,0.1);
+    }
+
+    .brand span {
+      font-size: 1.55rem;
+    }
+
+    .header-meta {
+      text-align: right;
+      color: var(--ink-soft);
+      font-size: 0.74rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 2.4mm;
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: '';
+      width: 7mm;
+      height: 0.3mm;
+      background: currentColor;
+    }
+
+    .hero-title {
+      font-size: 2.65rem;
+      max-width: 10.5ch;
+    }
+
+    .hero-title em,
+    .section-title em {
+      font-style: italic;
+      color: var(--sea-deep);
+    }
+
+    .section-title {
+      font-size: 1.95rem;
+      max-width: 11ch;
+    }
+
+    .lede,
+    .section-copy {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+      max-width: 62ch;
+    }
+
+    .pill-row,
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2mm;
+    }
+
+    .pill,
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 9mm;
+      padding: 2mm 3.6mm;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .pill {
+      background: rgba(111,201,194,0.12);
+      color: var(--sea-deep);
+      border: 1px solid rgba(47,139,134,0.14);
+    }
+
+    .meta-pill {
+      background: rgba(18,34,48,0.06);
+      color: var(--ink);
+      border: 1px solid rgba(18,34,48,0.08);
+    }
+
+    .hero-grid,
+    .content-grid,
+    .two-up,
+    .qa-grid,
+    .contact-grid {
+      display: grid;
+      gap: 5mm;
+    }
+
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .card,
+    .quote,
+    .image-card {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .card,
+    .image-card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(18,34,48,0.08);
+      border-radius: 7mm;
+      box-shadow: 0 10px 26px rgba(18,34,48,0.05);
+      overflow: hidden;
+    }
+
+    .card {
+      padding: 4.5mm;
+    }
+
+    .card h3,
+    .quote strong {
+      display: block;
+      margin-bottom: 2.1mm;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p,
+    .quote p,
+    .table td,
+    .table th,
+    .list li,
+    .numbered li {
+      font-size: 0.88rem;
+    }
+
+    .quote {
+      padding: 5mm;
+      background: linear-gradient(180deg, rgba(111,201,194,0.12), rgba(255,255,255,0.75));
+      border: 1px solid rgba(47,139,134,0.14);
+      border-radius: 7mm;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.6mm;
+    }
+
+    .stat {
+      padding: 3.8mm;
+      border-top: 1px solid rgba(18,34,48,0.08);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 1mm;
+      font-size: 1.35rem;
+    }
+
+    .stat span {
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    .list,
+    .numbered {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 2.2mm;
+    }
+
+    .list li,
+    .numbered li {
+      position: relative;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    .list li {
+      padding-left: 4.2mm;
+    }
+
+    .list li::before {
+      content: '';
+      position: absolute;
+      top: 1.5mm;
+      left: 0;
+      width: 1.8mm;
+      height: 1.8mm;
+      border-radius: 50%;
+      background: var(--sea);
+    }
+
+    .numbered {
+      counter-reset: step;
+    }
+
+    .numbered li {
+      padding-left: 9mm;
+      min-height: 7.2mm;
+    }
+
+    .numbered li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-items: center;
+      width: 5.8mm;
+      height: 5.8mm;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: auto;
+      max-height: 52mm;
+      object-fit: contain;
+      object-position: center;
+      padding: 3.5mm;
+      background: linear-gradient(180deg, #edf2f4, #e5ecef);
+    }
+
+    .image-copy {
+      padding: 4.4mm 4.8mm 5mm;
+    }
+
+    .image-copy strong {
+      display: block;
+      margin-bottom: 1.2mm;
+      font-size: 0.92rem;
+    }
+
+    .image-copy span {
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table tr:first-child th,
+    .table tr:first-child td {
+      border-top: none;
+    }
+
+    .table th,
+    .table td {
+      padding: 2.5mm 0;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.45;
+      border-top: 1px solid rgba(18,34,48,0.08);
+    }
+
+    .table th {
+      width: 32%;
+      padding-right: 3mm;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .table td {
+      color: var(--ink-soft);
+    }
+
+    .accent-band {
+      display: grid;
+      gap: 3.4mm;
+      padding: 4.5mm 5mm;
+      background: linear-gradient(135deg, rgba(18,34,48,0.94), rgba(28,57,73,0.9));
+      color: var(--white);
+      border-radius: 7mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .accent-band h3 {
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .accent-band p,
+    .accent-band li {
+      color: rgba(255,255,255,0.82);
+    }
+
+    .accent-band .list li::before {
+      background: var(--gold);
+    }
+
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2mm 4mm;
+      color: var(--ink-soft);
+      font-size: 0.86rem;
+    }
+
+    .contact-line strong {
+      color: var(--ink);
+    }
+
+    .footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 4mm;
+      border-top: 1px solid rgba(18,34,48,0.08);
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .print-note {
+        position: static;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .folio {
+        width: min(100%, calc(100% - 1rem));
+        margin-top: 0.75rem;
+      }
+
+      .sheet {
+        min-height: auto;
+        padding: 1rem;
+        border-radius: 28px;
+      }
+
+      .header {
+        flex-direction: column;
+      }
+
+      .header-meta {
+        text-align: left;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 9mm;
+    }
+
+    @media print {
+      html, body {
+        width: auto;
+        background: #fff;
+      }
+
+      body {
+        margin: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .print-note {
+        display: none;
+      }
+
+      .folio {
+        width: auto;
+        margin: 0;
+      }
+
+      .sheet {
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+        overflow: visible;
+      }
+
+      .sheet::before {
+        inset: 0;
+        height: 56mm;
+      }
+
+      .sheet-inner {
+        min-height: auto;
+        padding: 0;
+        gap: 3.8mm;
+      }
+
+      .card,
+      .image-card,
+      .quote,
+      .accent-band {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .hero-title {
+        font-size: 2.4rem;
+        max-width: none;
+      }
+
+      .section-title {
+        max-width: none;
+      }
+
+      .image-card img {
+        max-height: 46mm;
+      }
+
+      .footer {
+        margin-top: 3mm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="print-note">
+    <strong>Portrait PDF Export</strong>
+    <span>Use browser Print to PDF, keep A4 selected, and enable background graphics for the intended result.</span>
+  </div>
+
+  <main class="folio">
+    <section class="sheet">
+      <div class="sheet-inner">
+        <div class="header">
+          <a href="/" class="brand" aria-label="Go to SitTall - Fix Your Posture home">
+            <img src="icon.png" alt="SitTall - Fix Your Posture app icon" width="40" height="40">
+            <span>SitTall - Fix Your Posture</span>
+          </a>
+          <div class="header-meta">
+            Creator Launch Kit<br>
+            Portrait PDF Edition · April 2026
+          </div>
+        </div>
+
+        <span class="kicker">Creator Launch Kit</span>
+        <div class="hero-grid">
+          <div style="display:grid; gap:4mm;">
+            <div class="meta-row">
+              <span class="meta-pill">Gifted first</span>
+              <span class="meta-pill">Paid on request</span>
+              <span class="meta-pill">Available now on Mac App Store</span>
+            </div>
+            <h1 class="hero-title">Your AirPods know when you <em>slouch</em>.</h1>
+            <p class="lede">SitTall - Fix Your Posture is a posture reminder for Mac that uses supported AirPods motion sensors to detect posture drift and send gentle nudges from the menu bar. No camera. No account. No cloud.</p>
+            <div class="pill-row">
+              <span class="pill">AirPods-based</span>
+              <span class="pill">Privacy-first</span>
+              <span class="pill">Works offline</span>
+              <span class="pill">On-device only</span>
+            </div>
+          </div>
+
+          <div class="quote">
+            <strong>Primary creator ask</strong>
+            <p>Try SitTall - Fix Your Posture, create launch content around a real desk-work moment, and highlight the privacy-first difference versus camera-based posture tools.</p>
+          </div>
+
+          <div class="image-card">
+            <img src="assets/screenshots/screenshot-menu-with-alert.png" alt="SitTall - Fix Your Posture menu state showing posture alert">
+            <div class="image-copy">
+              <strong>Hero product view</strong>
+              <span>The UI explains the product quickly: menu bar native, gentle alerting, and easy-to-understand posture states.</span>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="card stat">
+              <strong>10s</strong>
+              <span>Typical calibration flow from support copy</span>
+            </div>
+            <div class="card stat">
+              <strong>0</strong>
+              <span>Camera access required</span>
+            </div>
+            <div class="card stat">
+              <strong>0</strong>
+              <span>Data collected or transmitted</span>
+            </div>
+            <div class="card stat">
+              <strong>14+</strong>
+              <span>macOS Sonoma or later</span>
+            </div>
+          </div>
+
+          <div class="contact-line">
+            <strong>Contact:</strong> <a href="mailto:anillatici@gmail.com?subject=SitTall - Fix Your Posture%20Creator%20Collab">anillatici@gmail.com</a>
+            <strong>Store:</strong> <a href="https://apps.apple.com/us/app/sittall-fix-your-posture/id6761648859?mt=12">Mac App Store</a>
+          </div>
+        </div>
+
+        <div class="footer">
+          <span>Page 1</span>
+          <span>Overview and core pitch</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet">
+      <div class="sheet-inner">
+        <div class="header">
+          <a href="/" class="brand" aria-label="Go to SitTall - Fix Your Posture home">
+            <img src="icon.png" alt="SitTall - Fix Your Posture app icon" width="40" height="40">
+            <span>SitTall - Fix Your Posture</span>
+          </a>
+          <div class="header-meta">
+            Mechanism, trust,<br>
+            and compatibility
+          </div>
+        </div>
+
+        <span class="kicker">Why It Works</span>
+        <h2 class="section-title">Built for people who spend long hours at a desk and stop noticing posture drift.</h2>
+        <p class="section-copy">SitTall - Fix Your Posture works because it notices posture change when it actually happens. Instead of using a timer or a webcam, it reads head motion from supported AirPods and triggers a local reminder only when your posture drifts past your baseline.</p>
+
+        <div class="content-grid">
+          <div class="card">
+            <h3>Product story</h3>
+            <ul class="list">
+              <li>Desk posture usually slips during focused work, not when someone is actively thinking about it.</li>
+              <li>Camera-based tools introduce privacy concerns and visible setup friction.</li>
+              <li>Timer-based nudges interrupt on schedule rather than on real posture change.</li>
+              <li>SitTall - Fix Your Posture fits naturally into a Mac workflow and feels lightweight enough to leave running.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>How it works</h3>
+            <ol class="numbered">
+              <li>Connect supported AirPods to a Mac running macOS 14 or later.</li>
+              <li>Capture good posture and bad posture once during calibration.</li>
+              <li>Let SitTall - Fix Your Posture monitor silently from the menu bar while you work.</li>
+              <li>Receive a local reminder when posture drift persists past your threshold.</li>
+            </ol>
+          </div>
+
+          <div class="image-card">
+            <img src="assets/screenshots/screenshot-calibration.png" alt="SitTall - Fix Your Posture calibration flow screenshot">
+            <div class="image-copy">
+              <strong>Quick setup</strong>
+              <span>Calibration is easy to show on-screen and helps creators explain why the app feels personal rather than generic.</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Core differentiators</h3>
+            <table class="table">
+              <tr>
+                <th>Privacy</th>
+                <td>No camera, no account, no analytics, no network requests.</td>
+              </tr>
+              <tr>
+                <th>Compatibility</th>
+                <td>macOS 14+ with AirPods Pro 2nd generation or AirPods 4 ANC.</td>
+              </tr>
+              <tr>
+                <th>Format</th>
+                <td>Menu bar app, local notifications, processed entirely on-device.</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="footer">
+          <span>Page 2</span>
+          <span>Mechanism and trust</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet">
+      <div class="sheet-inner">
+        <div class="header">
+          <a href="/" class="brand" aria-label="Go to SitTall - Fix Your Posture home">
+            <img src="icon.png" alt="SitTall - Fix Your Posture app icon" width="40" height="40">
+            <span>SitTall - Fix Your Posture</span>
+          </a>
+          <div class="header-meta">
+            Audience, hooks,<br>
+            and creator fit
+          </div>
+        </div>
+
+        <span class="kicker">Creator Fit</span>
+        <h2 class="section-title">Best for creators already showing a Mac, a desk setup, or a workday routine.</h2>
+        <p class="section-copy">SitTall - Fix Your Posture fits naturally into productivity, desk setup, Mac workflow, remote work, tech-lifestyle, and wellness-at-work content. The strongest concepts are honest, simple, and easy to understand in under ten seconds.</p>
+
+        <div class="accent-band">
+          <h3>Best content angles</h3>
+          <ul class="list">
+            <li>“Your AirPods know when you slouch.”</li>
+            <li>“This posture reminder for Mac doesn’t use a camera.”</li>
+            <li>“Small menu bar app, surprisingly useful desk habit.”</li>
+            <li>“A privacy-first posture reminder for people already living in AirPods.”</li>
+          </ul>
+        </div>
+
+        <div class="two-up">
+          <div class="card">
+            <h3>Recommended creator flow</h3>
+            <ol class="numbered">
+              <li>Open on the desk-work posture problem.</li>
+              <li>Show the calibration or menu bar setup.</li>
+              <li>Show the alert moment and reset.</li>
+              <li>Land on no camera, no account, Mac App Store.</li>
+            </ol>
+          </div>
+
+          <div class="card">
+            <h3>Offer positioning</h3>
+            <p>The outreach default is <strong>gifted first</strong>. Creators can try SitTall - Fix Your Posture before committing to anything bigger. If a creator has a strong concept or wants broader usage, paid collaboration can be discussed on request over email.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Safe messaging</h3>
+          <table class="table">
+            <tr>
+              <th>Say</th>
+              <td>Posture reminder, posture awareness, gentle nudge, no camera, works offline, on-device.</td>
+            </tr>
+            <tr>
+              <th>Avoid</th>
+              <td>Medical treatment claims, guaranteed pain relief, or broad AirPods compatibility claims.</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="image-card">
+          <img src="assets/screenshots/screenshot-notification.png" alt="SitTall - Fix Your Posture posture reminder notification screenshot">
+          <div class="image-copy">
+            <strong>Ideal payoff visual</strong>
+            <span>The notification is the easiest proof point for creators: simple, local, and easy to understand without overexplaining.</span>
+          </div>
+        </div>
+
+        <div class="footer">
+          <span>Page 3</span>
+          <span>Audience and creator angles</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="sheet">
+      <div class="sheet-inner">
+        <div class="header">
+          <a href="/" class="brand" aria-label="Go to SitTall - Fix Your Posture home">
+            <img src="icon.png" alt="SitTall - Fix Your Posture app icon" width="40" height="40">
+            <span>SitTall - Fix Your Posture</span>
+          </a>
+          <div class="header-meta">
+            FAQ, links,<br>
+            and contact
+          </div>
+        </div>
+
+        <span class="kicker">FAQ &amp; Contact</span>
+        <h2 class="section-title">A clean, creator-friendly product story with enough specificity to send immediately.</h2>
+        <p class="section-copy">This version is optimized for a sendable PDF: direct product framing, clear compatibility details, and a simple way for creators to request gifted access or discuss a paid concept.</p>
+
+        <div class="qa-grid">
+          <div class="card">
+            <h3>Creator FAQ</h3>
+            <table class="table">
+              <tr>
+                <th>Which AirPods work?</th>
+                <td>AirPods Pro 2nd generation and AirPods 4 ANC.</td>
+              </tr>
+              <tr>
+                <th>What Mac do I need?</th>
+                <td>macOS 14 Sonoma or later on Apple Silicon or Intel.</td>
+              </tr>
+              <tr>
+                <th>Does it use my camera?</th>
+                <td>No. Posture detection uses only supported AirPods motion sensors.</td>
+              </tr>
+              <tr>
+                <th>Does it work offline?</th>
+                <td>Yes. SitTall - Fix Your Posture makes no network requests and has no cloud component.</td>
+              </tr>
+              <tr>
+                <th>Is it paid?</th>
+                <td>The creator flow is gifted first. Paid collaboration can be discussed if requested.</td>
+              </tr>
+              <tr>
+                <th>Do I need to show my face?</th>
+                <td>No. Screen-led or desk-led content works well for this product.</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="image-card">
+            <img src="assets/screenshots/screenshot-privacy.png" alt="SitTall - Fix Your Posture privacy screenshot">
+            <div class="image-copy">
+              <strong>Trust close</strong>
+              <span>Privacy remains one of the strongest differentiators: no camera, no account, and entirely on-device.</span>
+            </div>
+          </div>
+
+          <div class="contact-grid">
+            <div class="card">
+              <h3>Contact</h3>
+              <p>Email <strong><a href="mailto:anillatici@gmail.com?subject=SitTall - Fix Your Posture%20Creator%20Collab">anillatici@gmail.com</a></strong> to request gifted access, share a concept, or ask about a paid collaboration.</p>
+            </div>
+
+            <div class="card">
+              <h3>Links</h3>
+              <p><a href="https://sittall.app">sittall.app</a><br><a href="https://apps.apple.com/us/app/sittall-fix-your-posture/id6761648859?mt=12">Mac App Store</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <span>Page 4</span>
+          <span>Contact and FAQ</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

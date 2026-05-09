@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SitTall - Fix Your Posture — Promo Video</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background: #030303;
+      overflow: hidden;
+    }
+
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+    // ── Animation framework (inlined) ──────────────────────────────────────────
+    const TimeContext = React.createContext(0);
+    function useTime() { return React.useContext(TimeContext); }
+
+    function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+    const Easing = {
+      easeOutCubic: (t) => 1 - Math.pow(1 - t, 3),
+      easeInOutCubic: (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+    };
+
+    function Stage({ width, height, duration, background, persistKey, loop, children }) {
+      const [time, setTime] = React.useState(0);
+      const [playing, setPlaying] = React.useState(false);
+      const rafRef = React.useRef(null);
+      const lastRef = React.useRef(null);
+
+      React.useEffect(() => {
+        if (persistKey) {
+          const saved = sessionStorage.getItem(persistKey);
+          if (saved != null) setTime(parseFloat(saved));
+        }
+      }, []);
+
+      React.useEffect(() => {
+        if (persistKey) sessionStorage.setItem(persistKey, time.toString());
+      }, [time, persistKey]);
+
+      React.useEffect(() => {
+        if (!playing) {
+          lastRef.current = null;
+          if (rafRef.current) cancelAnimationFrame(rafRef.current);
+          return;
+        }
+        const tick = (ts) => {
+          if (lastRef.current != null) {
+            const dt = (ts - lastRef.current) / 1000;
+            setTime((prev) => {
+              const next = prev + dt;
+              if (next >= duration) {
+                if (loop) return 0;
+                setPlaying(false);
+                return duration;
+              }
+              return next;
+            });
+          }
+          lastRef.current = ts;
+          rafRef.current = requestAnimationFrame(tick);
+        };
+        rafRef.current = requestAnimationFrame(tick);
+        return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+      }, [playing, duration, loop]);
+
+      const pct = duration > 0 ? (time / duration) * 100 : 0;
+      const fmt = (s) => {
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        const ms = Math.floor((s % 1) * 10);
+        return `${m}:${sec.toString().padStart(2, '0')}.${ms}`;
+      };
+
+      const handleScrub = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        setTime(clamp(x, 0, 1) * duration);
+      };
+
+      const handleKeyDown = React.useCallback((e) => {
+        if (e.code === 'Space') { e.preventDefault(); setPlaying((p) => !p); }
+        if (e.code === 'ArrowLeft') setTime((t) => clamp(t - 0.5, 0, duration));
+        if (e.code === 'ArrowRight') setTime((t) => clamp(t + 0.5, 0, duration));
+        if (e.code === 'Home') { setTime(0); setPlaying(false); }
+        if (e.code === 'End') { setTime(duration); setPlaying(false); }
+      }, [duration]);
+
+      React.useEffect(() => {
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+      }, [handleKeyDown]);
+
+      return (
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', background: '#000' }}>
+          <div style={{ flex: 1, position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{
+              width, height, position: 'relative', transformOrigin: 'center center',
+              background: background || '#000',
+              aspectRatio: `${width}/${height}`,
+              maxWidth: '100%', maxHeight: '100%',
+            }}>
+              <TimeContext.Provider value={time}>
+                {children}
+              </TimeContext.Provider>
+            </div>
+          </div>
+          <div style={{
+            height: 48, background: '#111114', borderTop: '1px solid #222',
+            display: 'flex', alignItems: 'center', padding: '0 16px', gap: 14,
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 12, color: '#888',
+            userSelect: 'none', flexShrink: 0,
+          }}>
+            <button onClick={() => { if (time >= duration) setTime(0); setPlaying((p) => !p); }} style={{
+              background: 'none', border: 'none', color: '#ccc', cursor: 'pointer',
+              fontSize: 18, padding: '2px 6px', lineHeight: 1,
+            }}>
+              {playing ? '\u23F8' : '\u25B6'}
+            </button>
+            <span style={{ minWidth: 80, textAlign: 'center', color: '#aaa' }}>
+              {fmt(time)} / {fmt(duration)}
+            </span>
+            <div
+              onClick={handleScrub}
+              onMouseDown={(e) => {
+                handleScrub(e);
+                const move = (ev) => handleScrub(ev);
+                const up = () => { window.removeEventListener('mousemove', move); window.removeEventListener('mouseup', up); };
+                window.addEventListener('mousemove', move);
+                window.addEventListener('mouseup', up);
+              }}
+              style={{
+                flex: 1, height: 6, background: '#2a2a2e', borderRadius: 3,
+                cursor: 'pointer', position: 'relative',
+              }}
+            >
+              <div style={{
+                width: `${pct}%`, height: '100%', background: '#2dd4bf',
+                borderRadius: 3, transition: playing ? 'none' : 'width 0.1s',
+              }} />
+              <div style={{
+                position: 'absolute', top: -5, left: `${pct}%`, transform: 'translateX(-50%)',
+                width: 14, height: 14, borderRadius: '50%', background: '#2dd4bf',
+                border: '2px solid #111114', boxShadow: '0 0 6px rgba(45,212,191,0.4)',
+              }} />
+            </div>
+            <span style={{ color: '#555', fontSize: 11 }}>1\u00D7</span>
+          </div>
+        </div>
+      );
+    }
+    // ── End framework ───────────────────────────────────────────────────────────
+
+    const SANS = "'Space Grotesk', sans-serif";
+    const MONO = "'JetBrains Mono', monospace";
+    const ACCENT = "oklch(0.72 0.16 175)";
+    const ACCENT_AMBER = "oklch(0.82 0.18 58)";
+    const BG = "#080809";
+    const TEXT = "#e8e7ea";
+    const TEXT2 = "#8a8a92";
+    const TEXT3 = "#4a4a52";
+    const ACCENT_HEX = "#2dd4bf"; // approx oklch(0.72 0.16 175)
+
+    // ── helpers ──────────────────────────────────────────────────────────────────
+    const eo = Easing.easeOutCubic;
+    const eio = Easing.easeInOutCubic;
+    const cl = clamp;
+    const ease = (t) => eo(cl(t, 0, 1));
+
+    // Fade a value in starting at `at`, over `dur` seconds
+    function fadeIn(t, at, dur = 0.55) {
+      return ease((t - at) / dur);
+    }
+
+    // ── Grid background ───────────────────────────────────────────────────────────
+    function GridBg({ op = 1 }) {
+      return (
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          backgroundImage: `
+        linear-gradient(rgba(255,255,255,0.042) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.042) 1px, transparent 1px)
+      `,
+          backgroundSize: '80px 80px',
+          opacity: op,
+          maskImage: 'radial-gradient(ellipse 110% 80% at 50% 10%, black 20%, transparent 75%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 110% 80% at 50% 10%, black 20%, transparent 75%)',
+        }} />
+      );
+    }
+
+    // ── Scene wrapper — handles crossfade in/out ─────────────────────────────────
+    function SceneWrap({ start, end, fade = 0.3, children }) {
+      const time = useTime();
+      if (time < start || time > end) return null;
+      const t = time - start;
+      const dur = end - start;
+      let op = 1;
+      if (t < fade) op = ease(t / fade);
+      else if (t > dur - fade) op = ease((dur - t) / fade);
+      return (
+        <div style={{ position: 'absolute', inset: 0, opacity: op, willChange: 'opacity' }}>
+          {typeof children === 'function' ? children(t) : children}
+        </div>
+      );
+    }
+
+    // ── Slide-up fade text ────────────────────────────────────────────────────────
+    function Appear({ t, at, dy = 22, children, style }) {
+      const p = fadeIn(t, at);
+      const ty = (1 - p) * dy;
+      return (
+        <div style={{
+          opacity: p,
+          transform: `translateY(${ty}px)`,
+          willChange: 'opacity, transform',
+          ...style,
+        }}>
+          {children}
+        </div>
+      );
+    }
+
+    // ── Slide-in from left ────────────────────────────────────────────────────────
+    function SlideLeft({ t, at, dx = 60, children, style }) {
+      const p = fadeIn(t, at);
+      const tx = (1 - p) * -dx;
+      return (
+        <div style={{
+          opacity: p,
+          transform: `translateX(${tx}px)`,
+          willChange: 'opacity, transform',
+          ...style,
+        }}>
+          {children}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // SCENE 1 — THE PROBLEM  (0 – 6.2s)
+    // ═══════════════════════════════════════════════════════════════════════════════
+    function Scene1_Hook() {
+      return (
+        <SceneWrap start={0} end={5.8}>
+          {(t) => {
+            const zoom = 1 + t * 0.007;
+            return (
+              <div style={{
+                position: 'absolute', inset: 0,
+                display: 'flex', flexDirection: 'column',
+                alignItems: 'center', justifyContent: 'center',
+                transform: `scale(${zoom})`,
+              }}>
+                {/* Timestamp eyebrow */}
+                <Appear t={t} at={0.2} style={{ textAlign: 'center', marginBottom: 36 }}>
+                  <div style={{ fontFamily: MONO, fontSize: 15, letterSpacing: '0.14em', color: TEXT3, textTransform: 'uppercase' }}>
+                    Monday · 3:47 PM
+                  </div>
+                </Appear>
+
+                {/* Hero statement */}
+                <Appear t={t} at={0.7} style={{ textAlign: 'center' }}>
+                  <div style={{
+                    fontFamily: SANS, fontSize: 108, fontWeight: 600,
+                    letterSpacing: '-0.03em', lineHeight: 1.06,
+                    color: TEXT, textAlign: 'center',
+                  }}>
+                    You've been<br />
+                    <span style={{ color: ACCENT_AMBER }}>slouching</span><br />
+                    for hours.
+                  </div>
+                </Appear>
+
+                {/* Sub */}
+                <Appear t={t} at={2.6} style={{ textAlign: 'center', marginTop: 36 }}>
+                  <div style={{ fontFamily: MONO, fontSize: 18, color: TEXT2, letterSpacing: '0.04em' }}>
+                    And you didn't even notice.
+                  </div>
+                </Appear>
+              </div>
+            );
+          }}
+        </SceneWrap>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // SCENE 2 — SENSOR DRIFT  (5.5 – 12.5s)
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // Side-profile head facing RIGHT. Pivot at (0,65) = neck base.
+    // Positive tiltDeg → head tilts FORWARD.
+function HeadSilhouette({ tiltDeg, alertProg, isSad }) {
+  const accentColor = alertProg > 0.4 ? ACCENT_AMBER : ACCENT_HEX;
+  const op = 0.78 + alertProg * 0.22;
+
+  return (
+    <g transform={`rotate(${tiltDeg}, 0, 65)`}>
+      {/* Supplied SVG artwork, scaled from file.svg into the animation coordinate system. */}
+      <g transform="translate(-216.3 -144) scale(0.42)" fill={accentColor} opacity={op}>
+        <path d={`
+          M514.988892,112.838760
+          C552.939819,113.554825 588.068481,122.463455 619.349487,143.638474
+          C656.536560,168.811478 677.355713,204.733444 686.335999,248.133743
+          C687.852051,255.460632 688.076050,263.022034 690.296021,270.208618
+          C694.874329,285.030579 705.399048,295.450531 716.522034,305.417816
+          C718.753662,307.417633 721.033142,309.387360 723.073181,311.573761
+          C733.474548,322.721069 733.364380,337.710419 722.998901,348.914612
+          C716.202698,356.260681 707.963562,361.535522 699.037720,365.784576
+          C696.023254,367.219513 694.773865,369.108276 694.103760,372.469971
+          C687.860413,403.794250 675.374695,431.784363 650.079834,452.686005
+          C632.909973,466.873779 612.872131,474.551666 591.164978,478.169647
+          C574.818420,480.894165 558.326477,481.036835 541.845154,479.619629
+          C538.133545,479.300537 536.959595,480.407349 537.446167,483.961456
+          C540.603088,507.018616 543.534912,530.108093 547.922607,552.980103
+          C548.640991,556.725037 549.190308,560.536194 549.384277,564.338806
+          C549.591614,568.401978 547.500977,571.039062 543.285583,571.408386
+          C539.231750,571.763611 536.514709,569.952881 535.687988,565.845581
+          C532.109802,548.067383 529.078918,530.192932 526.745972,512.210388
+          C525.226501,500.499023 523.674927,488.773682 522.773560,477.005920
+          C522.004639,466.967560 525.794983,463.990417 535.967346,464.899445
+          C557.120789,466.789764 578.200806,466.871094 599.018066,461.734711
+          C629.966309,454.098602 652.751099,436.145020 667.314880,407.790009
+          C668.052673,406.353638 669.117615,404.950226 668.622314,402.487671
+          C662.518494,402.437073 656.284485,401.963776 650.223877,400.286652
+          C643.468750,398.417358 636.775574,396.409241 630.773499,392.648468
+          C629.507019,391.854889 628.207397,391.035278 627.155823,389.992859
+          C624.278748,387.140686 623.767761,383.851288 626.306458,380.578430
+          C628.651489,377.555267 631.588623,377.642822 634.742249,379.527405
+          C643.738098,384.903229 653.467834,388.140656 663.888123,389.289764
+          C664.878723,389.398987 665.869690,389.598480 666.860413,389.597565
+          C674.407776,389.590637 675.221191,389.070282 677.135864,381.704620
+          C678.514709,376.400238 679.773621,371.042877 680.663269,365.639557
+          C681.463806,360.777039 683.716125,357.386536 688.229614,355.294373
+          C694.735168,352.278809 701.137146,349.021759 706.616028,344.290100
+          C708.752014,342.445435 710.910217,340.551422 712.681091,338.373230
+          C717.827759,332.042816 717.534546,326.454285 711.685913,320.692719
+          C706.821533,315.900726 701.610779,311.461060 696.729187,306.685669
+          C682.321045,292.590912 675.779419,275.264709 672.584473,255.381454
+          C662.103516,190.154785 617.934875,144.035278 553.640198,131.612076
+          C484.210815,118.196739 423.519287,136.829910 373.037964,186.192383
+          C347.435944,211.226990 331.724335,242.208160 327.555603,278.076935
+          C322.654053,320.250946 334.543213,357.831024 361.290100,390.655487
+          C382.741882,416.981598 410.002686,435.305939 441.448761,447.649780
+          C451.596130,451.633087 453.156067,454.823120 449.336090,465.182220
+          C438.045441,495.800171 426.675720,526.388977 415.313446,556.980469
+          C413.503815,561.852661 409.654816,563.943359 405.678223,562.352844
+          C401.671387,560.750183 400.079773,556.683472 401.822144,551.952759
+          C412.297241,523.512146 422.824280,495.090668 433.307220,466.652893
+          C433.987366,464.807800 435.048737,463.040405 434.904144,460.592682
+          C426.381500,456.690613 417.623199,453.079254 409.317688,448.500458
+          C371.855469,427.847809 342.891876,399.225677 325.537872,359.633759
+          C318.459259,343.484406 313.902618,326.662262 312.697510,309.059143
+          C308.578491,248.891586 332.353363,200.692383 377.302795,162.342056
+          C409.299286,135.043015 446.824158,119.621689 488.618622,114.548477
+          C497.230225,113.503159 505.816467,112.638657 514.988892,112.838760
+          z
+        `} />
+        <path d={`
+          M440.866577,373.950684
+          C440.438965,372.085480 439.957733,370.646423 439.773254,369.170319
+          C438.885162,362.064209 435.600098,357.123749 429.460114,352.724609
+          C413.012787,340.940552 407.197266,320.948120 413.963715,303.688904
+          C420.258301,287.633240 438.389191,277.617340 457.148651,279.832672
+          C477.855713,282.277985 493.618713,296.994171 496.632141,317.642303
+          C498.555298,330.819855 493.598602,342.082489 483.409576,350.329254
+          C479.108887,353.810181 478.548859,356.926086 479.549011,361.718231
+          C482.466949,375.699768 485.084076,389.744507 487.769562,403.773926
+          C488.875916,409.553772 486.569122,414.477966 481.437988,417.129028
+          C475.569122,420.161194 469.155304,421.401611 462.667419,421.810852
+          C456.848785,422.177887 452.188660,418.488556 450.636169,412.578583
+          C447.297180,399.867950 444.165985,387.102692 440.866577,373.950684
+          M476.542542,397.886688
+          C472.954193,380.290771 469.352753,362.697510 465.793518,345.095703
+          C465.333282,342.819672 464.907898,340.508759 464.792297,338.197693
+          C464.631653,334.986328 466.112915,332.505585 469.415405,332.085480
+          C472.856110,331.647827 474.459625,334.005035 475.152374,337.081451
+          C475.529236,338.755066 474.921875,340.832764 477.148560,341.897858
+          C481.279022,339.006622 483.894409,335.067932 485.391022,330.350616
+          C490.287994,314.915161 480.602936,297.648376 463.752563,291.721771
+          C445.152344,285.179657 425.700836,295.057373 421.785522,313.033173
+          C419.177460,325.007263 426.484253,339.844147 438.582886,346.602203
+          C442.712097,348.908661 445.981750,351.734406 447.151794,356.428680
+          C450.932068,371.595276 454.651459,386.777100 458.383484,401.955688
+          C460.950134,412.394501 460.942108,412.396515 471.652283,409.868835
+          C477.666840,408.449402 478.227081,407.596375 477.084595,401.694244
+          C476.895142,400.715485 476.795563,399.719360 476.542542,397.886688
+          z
+        `} />
+        <path d={`
+          M629.350464,263.005249
+          C629.347107,268.002136 629.434875,272.503235 629.316711,276.998871
+          C629.164307,282.800629 625.751343,286.518707 620.663330,286.656830
+          C615.647583,286.792938 611.728638,283.024170 611.653198,277.366241
+          C611.535583,268.549652 610.711670,259.736420 611.477539,250.908875
+          C611.931885,245.673279 615.599854,241.906616 620.411499,241.949905
+          C624.984985,241.991058 628.862366,245.554947 629.226807,250.515884
+          C629.519104,254.494476 629.327209,258.508606 629.350464,263.005249
+          z
+        `} />
+        <path d={`
+          M435.608582,300.209442
+          C439.937195,297.992798 443.813263,298.056366 446.891266,301.503754
+          C449.986938,304.971008 450.116455,309.128876 448.068665,313.178833
+          C445.660828,317.941010 442.434540,321.971100 436.566071,322.408783
+          C430.017273,322.897217 426.073425,317.954559 427.413727,311.504669
+          C428.437012,306.580475 431.277863,303.132233 435.608582,300.209442
+          z
+        `} />
+      </g>
+      {/* Alert pulse ring */}
+          {alertProg > 0.25 && (
+            <circle cx="0" cy="-12" r="104"
+              fill="none" stroke={ACCENT_AMBER} strokeWidth="1"
+              strokeDasharray="6 5"
+              opacity={0.18 + alertProg * 0.28}
+            />
+          )}
+        </g>
+      );
+    }
+
+    function Scene2_Drift() {
+      return (
+        <SceneWrap start={5.7} end={12.2}>
+          {(t) => {
+            // Angle: 0° → 15° from t=1 to t=4.5
+            const rawAngle = t < 1 ? 0 : Math.min(15, (t - 1) * 4.3);
+            const angle = rawAngle;
+            const alertProg = t > 3.5 ? ease((t - 3.5) / 1.2) : 0;
+            const blinkOn = Math.sin(t * 7) > 0;
+            const pitch = angle.toFixed(1);
+
+            return (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+
+                {/* LEFT: data readout */}
+                <Appear t={t} at={0.3} style={{ position: 'absolute', left: 160, top: '50%', transform: 'translateY(-50%)' }}>
+                  <div style={{ fontFamily: MONO, lineHeight: 1 }}>
+                    <div style={{ fontSize: 11, color: TEXT3, letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 20 }}>
+                      Sensor Data
+                    </div>
+                    {[
+                      ['PITCH', `+${pitch}°`, alertProg > 0.4],
+                      ['ROLL', '−0.4°', false],
+                      ['YAW', '+0.8°', false],
+                    ].map(([label, val, amber]) => (
+                      <div key={label} style={{ display: 'flex', gap: 24, alignItems: 'baseline', marginBottom: 14 }}>
+                        <span style={{ fontSize: 11, color: TEXT3, letterSpacing: '0.1em', width: 52 }}>{label}</span>
+                        <span style={{ fontSize: 20, color: amber ? ACCENT_AMBER : ACCENT, fontWeight: 400, transition: 'color 0.3s' }}>
+                          {val}
+                        </span>
+                      </div>
+                    ))}
+                    <div style={{ marginTop: 24, display: 'flex', gap: 24, alignItems: 'baseline' }}>
+                      <span style={{ fontSize: 11, color: TEXT3, letterSpacing: '0.1em', width: 52 }}>STATUS</span>
+                      <span style={{
+                        fontSize: 14, fontWeight: 500, letterSpacing: '0.06em',
+                        color: alertProg > 0.4 ? ACCENT_AMBER : ACCENT,
+                        opacity: alertProg > 0.4 ? (blinkOn ? 1 : 0.55) : 1,
+                        transition: 'color 0.3s',
+                      }}>
+                        {alertProg > 0.5 ? 'ALERT' : angle > 4 ? 'DRIFT' : 'GOOD'}
+                      </span>
+                    </div>
+                  </div>
+                </Appear>
+
+                {/* CENTER: head */}
+            <svg width="300" height="340" viewBox="-110 -120 260 270">
+                  {/* Reference vertical – ideal upright axis */}
+                  <line x1="0" y1="-108" x2="0" y2="108"
+                    stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="5 5" />
+                  <HeadSilhouette tiltDeg={angle} alertProg={alertProg} />
+                </svg>
+
+                {/* RIGHT: angle number */}
+                <Appear t={t} at={1.3} style={{ position: 'absolute', right: 160, top: '50%', transform: 'translateY(-55%)', textAlign: 'right' }}>
+                  <div>
+                    <div style={{
+                      fontFamily: MONO, fontSize: 96, fontWeight: 300,
+                      letterSpacing: '-0.04em', lineHeight: 1,
+                      color: alertProg > 0.5 ? ACCENT_AMBER : TEXT2,
+                      transition: 'color 0.3s',
+                    }}>
+                      +{pitch}°
+                    </div>
+                    <div style={{ fontFamily: MONO, fontSize: 11, color: TEXT3, letterSpacing: '0.1em', marginTop: 10, textTransform: 'uppercase' }}>
+                      Forward head drift
+                    </div>
+                    <div style={{
+                      marginTop: 20, fontFamily: MONO, fontSize: 13,
+                      color: ACCENT_AMBER, letterSpacing: '0.06em',
+                      opacity: alertProg > 0.5 ? (blinkOn ? 1 : 0.5) : 0,
+                      transition: 'opacity 0.1s',
+                    }}>
+                      ⚠ Posture Alert
+                    </div>
+                  </div>
+                </Appear>
+
+              </div>
+            );
+          }}
+        </SceneWrap>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // SCENE 3 — THE REVEAL  (11.5 – 18s)
+    // ═══════════════════════════════════════════════════════════════════════════════
+    function AirPodGlyph({ scale = 1, glow = 0.4 }) {
+      return (
+        <g transform={`scale(${scale})`}>
+          <circle cx="0" cy="0" r="150" fill="none" stroke={ACCENT_HEX} strokeWidth="0.4" opacity={glow * 0.25} />
+          <circle cx="0" cy="0" r="115" fill="none" stroke={ACCENT_HEX} strokeWidth="0.6" opacity={glow * 0.4} />
+          <circle cx="0" cy="0" r="84" fill="none" stroke={ACCENT_HEX} strokeWidth="0.9" opacity={glow * 0.6} />
+          <circle cx="0" cy="0" r="58" fill={ACCENT_HEX} opacity={glow * 0.07} />
+          {/* Body */}
+          <ellipse cx="0" cy="-18" rx="30" ry="48" fill="none" stroke={ACCENT_HEX} strokeWidth="2.4" />
+          {/* Stem */}
+          <rect x="-9" y="30" width="18" height="52" rx="9" fill="none" stroke={ACCENT_HEX} strokeWidth="2.4" />
+          {/* Sensor dot */}
+          <circle cx="0" cy="-36" r="7" fill={ACCENT_HEX} opacity="0.9" />
+          {/* Mesh */}
+          <circle cx="-8" cy="-12" r="2.5" fill={ACCENT_HEX} opacity="0.4" />
+          <circle cx="0" cy="-12" r="2.5" fill={ACCENT_HEX} opacity="0.4" />
+          <circle cx="8" cy="-12" r="2.5" fill={ACCENT_HEX} opacity="0.4" />
+          {/* Signal lines */}
+          <line x1="0" y1="-43" x2="0" y2="-72" stroke={ACCENT_HEX} strokeWidth="1.2" strokeDasharray="4 5" opacity="0.5" />
+          <line x1="12" y1="-30" x2="36" y2="-52" stroke={ACCENT_HEX} strokeWidth="1.2" strokeDasharray="4 5" opacity="0.4" />
+          <line x1="-12" y1="-30" x2="-36" y2="-52" stroke={ACCENT_HEX} strokeWidth="1.2" strokeDasharray="4 5" opacity="0.4" />
+        </g>
+      );
+    }
+
+    function Scene3_Reveal() {
+      return (
+        <SceneWrap start={12.1} end={17.7}>
+          {(t) => {
+            const iconScale = t < 0.7 ? 0.7 + ease(t / 0.7) * 0.3 : 1;
+            const glow = 0.35 + Math.sin(t * 1.4) * 0.08;
+            return (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                {/* Radial glow behind icon */}
+                <div style={{
+                  position: 'absolute',
+                  width: 600, height: 600,
+                  background: `radial-gradient(circle, oklch(0.72 0.16 175 / ${glow * 0.45}) 0%, transparent 65%)`,
+                  pointerEvents: 'none',
+                  top: '50%', left: '50%',
+                  transform: 'translate(-50%, -64%)',
+                }} />
+
+                <div style={{ marginBottom: 64, opacity: ease(t / 0.7), position: 'relative' }}>
+                  {/* Glow behind logo */}
+                  <div style={{
+                    position: 'absolute', inset: -60,
+                    background: `radial-gradient(circle, oklch(0.52 0.2 255 / ${glow * 0.5}) 0%, transparent 65%)`,
+                    pointerEvents: 'none',
+                  }} />
+                  <img src="sittall-logo.png" style={{
+                    width: 200, height: 200,
+                    borderRadius: 44,
+                    transform: `scale(${iconScale})`,
+                    boxShadow: `0 0 80px oklch(0.52 0.2 255 / ${glow * 0.55})`,
+                    position: 'relative',
+                  }} />
+                </div>
+
+                <Appear t={t} at={0.5} style={{ textAlign: 'center' }}>
+                  <div style={{ fontFamily: SANS, fontSize: 104, fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.05, color: TEXT }}>
+                    Your AirPods
+                  </div>
+                </Appear>
+                <Appear t={t} at={1.1} style={{ textAlign: 'center' }}>
+                  <div style={{ fontFamily: SANS, fontSize: 104, fontWeight: 600, letterSpacing: '-0.03em', color: ACCENT }}>
+                    already know.
+                  </div>
+                </Appear>
+                <Appear t={t} at={2.6} style={{ textAlign: 'center', marginTop: 32 }}>
+                  <div style={{ fontFamily: MONO, fontSize: 14, color: TEXT3, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                    6-axis motion · 60 Hz · on-device
+                  </div>
+                </Appear>
+              </div>
+            );
+          }}
+        </SceneWrap>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // SCENE 4 — THE APP  (17.5 – 23.5s)
+    // ═══════════════════════════════════════════════════════════════════════════════
+    function MenuDropdown({ t }) {
+      const p = fadeIn(t, 1.1, 0.7);
+      const ty = (1 - p) * -28;
+      const appBg = '#162e3e';
+
+      return (
+        <div style={{
+          width: 480, borderRadius: 14, overflow: 'hidden',
+          border: '1px solid rgba(255,255,255,0.12)',
+          boxShadow: '0 24px 72px rgba(0,0,0,0.7)',
+          opacity: p, transform: `translateY(${ty}px)`,
+          willChange: 'opacity, transform',
+        }}>
+          {/* macOS menu bar strip */}
+          <div style={{
+            height: 38, background: 'rgba(14,14,16,0.98)',
+            display: 'flex', alignItems: 'center',
+            padding: '0 18px', justifyContent: 'space-between',
+            borderBottom: '1px solid rgba(255,255,255,0.07)',
+          }}>
+            <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+              <span style={{ fontFamily: SANS, fontSize: 14, color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>⌘</span>
+              {['Finder', 'File', 'Edit', 'View', 'Go'].map(l => (
+                <span key={l} style={{ fontFamily: SANS, fontSize: 13, color: 'rgba(255,255,255,0.3)', fontWeight: 500 }}>{l}</span>
+              ))}
+            </div>
+            <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+              <span style={{ fontFamily: SANS, fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>3:47</span>
+              <img src="sittall-logo.png" style={{ width: 22, height: 22, borderRadius: 5 }} />
+            </div>
+          </div>
+
+          {/* Real app popover */}
+          <div style={{ background: appBg, padding: '18px 20px 14px' }}>
+            {/* Header: person icon + title */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
+              {/* Green stick figure */}
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="7" r="4" fill="#4ade80" />
+                <line x1="16" y1="11" x2="16" y2="22" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" />
+                <line x1="9" y1="16" x2="23" y2="16" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" />
+                <line x1="16" y1="22" x2="10" y2="30" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" />
+                <line x1="16" y1="22" x2="22" y2="30" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" />
+              </svg>
+              <div>
+                <div style={{ fontFamily: SANS, fontSize: 16, fontWeight: 700, color: '#fff' }}>Good posture</div>
+                <div style={{ fontFamily: SANS, fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>Monitoring active</div>
+              </div>
+            </div>
+
+            {/* Posture drift */}
+            <div style={{ marginBottom: 12 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
+                <span style={{ fontFamily: SANS, fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>Posture drift</span>
+                <span style={{ fontFamily: SANS, fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>1° toward bad posture</span>
+              </div>
+              <div style={{ height: 5, background: 'rgba(255,255,255,0.1)', borderRadius: 3 }}>
+                <div style={{ width: '5%', height: '100%', background: '#4ade80', borderRadius: 3 }} />
+              </div>
+            </div>
+
+            {/* Today's Score */}
+            <div style={{ marginBottom: 14 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
+                <span style={{ fontFamily: SANS, fontSize: 13, fontWeight: 600, color: '#fff' }}>Today's Score ⓘ</span>
+                <span style={{ fontFamily: SANS, fontSize: 13, fontWeight: 600, color: '#fbbf24' }}>61%</span>
+              </div>
+              <div style={{ height: 5, background: 'rgba(255,255,255,0.1)', borderRadius: 3 }}>
+                <div style={{ width: '61%', height: '100%', background: '#fbbf24', borderRadius: 3 }} />
+              </div>
+            </div>
+
+            {/* Stats row */}
+            <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
+              {[['↘ 10', 'Slouches'], ['↗ 9', 'Fixes'], ['⏱ 4m', 'Slouched']].map(([val, label]) => (
+                <div key={label} style={{
+                  flex: 1, background: 'rgba(255,255,255,0.06)',
+                  borderRadius: 8, padding: '10px 0', textAlign: 'center',
+                }}>
+                  <div style={{ fontFamily: SANS, fontSize: 15, fontWeight: 600, color: '#fff' }}>{val}</div>
+                  <div style={{ fontFamily: SANS, fontSize: 11, color: 'rgba(255,255,255,0.45)', marginTop: 2 }}>{label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Share */}
+            <div style={{ paddingBottom: 12, marginBottom: 4, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ fontFamily: SANS, fontSize: 13, color: 'rgba(255,255,255,0.65)' }}>⎙ Share Today's Stats</span>
+            </div>
+
+            {/* Menu items */}
+            {[['⊙ Recalibrate Posture', true], ['⚙ Settings...', false], ['⏻ Quit SitTall - Fix Your Posture', false]].map(([label, hasBorder], i) => (
+              <div key={label} style={{
+                padding: '10px 0',
+                borderTop: i > 0 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+              }}>
+                <span style={{ fontFamily: SANS, fontSize: 13, color: 'rgba(255,255,255,0.72)' }}>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    function Scene4_Brand() {
+      return (
+        <SceneWrap start={17.6} end={23.2}>
+          {(t) => {
+            const glow = 0.3 + Math.sin(t * 1.1) * 0.06;
+            return (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 52 }}>
+                {/* Radial glow */}
+                <div style={{
+                  position: 'absolute', width: 400, height: 300, pointerEvents: 'none',
+                  background: `radial-gradient(ellipse, oklch(0.72 0.16 175 / ${glow}) 0%, transparent 70%)`,
+                  top: '28%', left: '50%', transform: 'translate(-50%,-50%)',
+                }} />
+
+                <Appear t={t} at={0.2} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18 }}>
+                  {/* Logo */}
+                  <img src="sittall-logo.png" style={{
+                    width: 88, height: 88, borderRadius: 20,
+                    boxShadow: `0 0 64px oklch(0.52 0.2 255 / 0.5)`,
+                  }} />
+                  <div style={{ fontFamily: MONO, fontSize: 44, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: TEXT }}>
+                    SitTall - Fix Your Posture
+                  </div>
+                  <div style={{ fontFamily: MONO, fontSize: 13, color: TEXT3, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+                    AirPods Posture Reminder for Mac
+                  </div>
+                </Appear>
+
+                <MenuDropdown t={t} />
+              </div>
+            );
+          }}
+        </SceneWrap>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // SCENE 5 — HOW IT WORKS  (23 – 41s) · 6s per step
+    // ═══════════════════════════════════════════════════════════════════════════════
+
+    // Shared step layout: text left, demo right
+    function StepLayout({ t, stepNum, title, body, children }) {
+      const p = Math.min(fadeIn(t, 0, 0.5), 1 - fadeIn(t, 5.55, 0.4));
+      return (
+        <div style={{
+          position: 'absolute', inset: 0,
+          display: 'flex', alignItems: 'center',
+          padding: '0 120px',
+          opacity: p,
+          willChange: 'opacity',
+        }}>
+          {/* Left: text column */}
+          <div style={{ width: 500, flexShrink: 0, paddingRight: 40 }}>
+            <div style={{ fontFamily: MONO, fontSize: 12, color: ACCENT, letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 28 }}>
+              / How it works · {stepNum} of 3
+            </div>
+            <div style={{ fontFamily: SANS, fontSize: 76, fontWeight: 600, letterSpacing: '-0.025em', lineHeight: 1.06, color: TEXT, marginBottom: 30 }}>
+              {title}
+            </div>
+            <div style={{ fontFamily: MONO, fontSize: 16, color: TEXT2, lineHeight: 1.75 }}>
+              {body}
+            </div>
+          </div>
+          {/* Right: demo */}
+          <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+            {children}
+          </div>
+        </div>
+      );
+    }
+
+    // ── Step 1 Demo: Calibration UI ────────────────────────────────────────────────
+    function CalibrationDemo({ t }) {
+      // 0–1.8s: show "sit tall" prompt, head upright
+      // 1.8–3s: GOOD confirmed with pulse
+      // 3–5s: slouch prompt, head tilts
+      // 5s+: BAD confirmed
+      const goodConfirmed = t > 1.6;
+      const slouching = t > 3.0;
+      const badConfirmed = t > 5.0;
+      const headAngle = slouching ? Math.min(15, (t - 3.0) * 7.5) : 0;
+      const alertProg = slouching ? Math.min(1, (t - 3.0) / 1.4) : 0;
+      const goodGlow = goodConfirmed && !badConfirmed ? 0.5 + 0.35 * Math.sin(t * 4) : goodConfirmed ? 0.7 : 0;
+      const badGlow = badConfirmed ? 0.5 + 0.35 * Math.sin(t * 4) : 0;
+
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 52 }}>
+          {/* Head */}
+          <div style={{ position: 'relative' }}>
+            <div style={{
+              position: 'absolute', inset: -80,
+              background: `radial-gradient(circle, oklch(0.72 0.16 175 / ${goodConfirmed && !badConfirmed ? 0.22 : 0}) 0%, transparent 60%)`,
+              pointerEvents: 'none', transition: 'background 0.5s',
+            }} />
+        <svg width="240" height="260" viewBox="-110 -120 240 270">
+              <line x1="0" y1="-108" x2="0" y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="5 5" />
+              <HeadSilhouette tiltDeg={headAngle} alertProg={alertProg} />
+            </svg>
+          </div>
+
+          {/* Two-button calibration UI */}
+          <div style={{ display: 'flex', gap: 18 }}>
+            {/* GOOD button */}
+            <div style={{
+              padding: '18px 46px', borderRadius: 12,
+              fontFamily: MONO, fontSize: 15, fontWeight: 600, letterSpacing: '0.08em',
+              background: goodConfirmed ? ACCENT : 'rgba(255,255,255,0.05)',
+              color: goodConfirmed ? '#080809' : TEXT3,
+              border: `1.5px solid ${goodConfirmed ? ACCENT_HEX : 'rgba(255,255,255,0.1)'}`,
+              boxShadow: goodGlow > 0 ? `0 0 32px oklch(0.72 0.16 175 / ${goodGlow * 0.6})` : 'none',
+              transition: 'all 0.4s',
+            }}>
+              {goodConfirmed ? '✓ GOOD SET' : 'GOOD POSTURE'}
+            </div>
+            {/* BAD button */}
+            <div style={{
+              padding: '18px 46px', borderRadius: 12,
+              fontFamily: MONO, fontSize: 15, fontWeight: 600, letterSpacing: '0.08em',
+              background: badConfirmed ? 'oklch(0.82 0.18 58)' : 'rgba(255,255,255,0.05)',
+              color: badConfirmed ? '#080809' : slouching ? TEXT2 : TEXT3,
+              border: `1.5px solid ${badConfirmed ? 'oklch(0.82 0.18 58)' : slouching ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.08)'}`,
+              boxShadow: badGlow > 0 ? `0 0 32px oklch(0.82 0.18 58 / ${badGlow * 0.5})` : 'none',
+              transition: 'all 0.4s',
+            }}>
+              {badConfirmed ? '✓ BAD SET' : 'BAD POSTURE'}
+            </div>
+          </div>
+
+          {/* Hint text */}
+          <div style={{ fontFamily: MONO, fontSize: 12, color: TEXT3, letterSpacing: '0.08em', textAlign: 'center' }}>
+            {badConfirmed ? 'Calibration complete · Ready to monitor' :
+              slouching ? 'Now slouch — then tap Bad Posture' :
+                goodConfirmed ? 'Good posture saved · Now slouch when ready' :
+                  'Sit up straight — then tap Good Posture'}
+          </div>
+        </div>
+      );
+    }
+
+    // ── Step 2 Demo: Live Sensor HUD ───────────────────────────────────────────────
+    function SensorHUDDemo({ t }) {
+      const pitch = (2.3 + Math.sin(t * 1.7) * 1.1).toFixed(1);
+      const roll = (-0.4 + Math.sin(t * 1.1 + 0.5) * 0.7).toFixed(1);
+      const yaw = (0.9 + Math.sin(t * 0.8 + 1.2) * 0.5).toFixed(1);
+      const glow = 0.36 + Math.sin(t * 1.4) * 0.09;
+      const blink = 0.5 + 0.5 * Math.sin(t * 3.5);
+
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 40 }}>
+          {/* Real logo with ambient glow */}
+          <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{
+              position: 'absolute', width: 320, height: 320, borderRadius: '50%',
+              background: `radial-gradient(circle, oklch(0.52 0.2 255 / ${glow * 0.5}) 0%, transparent 65%)`,
+              pointerEvents: 'none',
+            }} />
+            <img src="sittall-logo.png" style={{
+              width: 140, height: 140, borderRadius: 30,
+              position: 'relative',
+              boxShadow: `0 0 48px oklch(0.52 0.2 255 / ${glow * 0.5})`,
+            }} />
+          </div>
+
+          {/* Big data readout */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {[['PITCH', `+${pitch}°`], ['ROLL', `${roll}°`], ['YAW', `+${yaw}°`]].map(([label, val]) => (
+              <div key={label} style={{ display: 'flex', alignItems: 'baseline', gap: 28 }}>
+                <span style={{ fontFamily: MONO, fontSize: 12, color: TEXT3, letterSpacing: '0.1em', width: 58, textAlign: 'right' }}>{label}</span>
+                <span style={{ fontFamily: MONO, fontSize: 68, fontWeight: 300, letterSpacing: '-0.04em', color: ACCENT, lineHeight: 1.1 }}>{val}</span>
+              </div>
+            ))}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginTop: 10, paddingLeft: 86 }}>
+              <span style={{ fontFamily: MONO, fontSize: 13, color: ACCENT, letterSpacing: '0.06em' }}>GOOD</span>
+              <span style={{
+                width: 9, height: 9, borderRadius: '50%', background: ACCENT_HEX,
+                display: 'inline-block', opacity: blink,
+              }} />
+              <span style={{ fontFamily: MONO, fontSize: 11, color: TEXT3, letterSpacing: '0.08em' }}>60 Hz · on-device</span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ── Step 3 Demo: Notification + correction ─────────────────────────────────────
+    function NotificationDemo({ t }) {
+      // 0–1s: head slouched, no notif
+      // 1–1.8s: notification slides in
+      // 1.8–3s: sits there
+      // 3–5s: head straightens, notif fades, "corrected" shown
+      const notifP = ease(cl((t - 0.9) / 0.7, 0, 1)) * (t < 4.2 ? 1 : ease(cl((5.0 - t) / 0.6, 0, 1)));
+      const notifTY = (1 - ease(cl((t - 0.9) / 0.7, 0, 1))) * -50;
+      const headAngle = t < 3.2 ? 14 : Math.max(0, 14 - (t - 3.2) * 10);
+      const alertProg = t < 3.2 ? 0.75 : Math.max(0, 0.75 - (t - 3.2) * 0.7);
+      const corrected = t > 4.6;
+
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 44 }}>
+          {/* Notification banner – matches real macOS notification */}
+          <div style={{
+            opacity: notifP, transform: `translateY(${notifTY}px)`,
+            willChange: 'opacity, transform',
+            background: 'rgba(42,42,48,0.97)',
+            border: '1px solid rgba(255,255,255,0.13)',
+            borderRadius: 14, padding: '14px 18px',
+            display: 'flex', gap: 14, alignItems: 'flex-start',
+            width: 440,
+            boxShadow: '0 20px 64px rgba(0,0,0,0.7)',
+          }}>
+            <img src="sittall-logo.png" style={{ width: 44, height: 44, borderRadius: 10, flexShrink: 0 }} />
+            <div style={{ flex: 1 }}>
+              <div style={{ fontFamily: SANS, fontSize: 13, fontWeight: 700, color: TEXT, marginBottom: 3 }}>Posture Alert</div>
+              <div style={{ fontFamily: SANS, fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.45 }}>
+                You've been in a bad position for a while. Sit up straight!
+              </div>
+            </div>
+            <span style={{ fontFamily: SANS, fontSize: 11, color: TEXT3, flexShrink: 0, marginTop: 2 }}>1m ago</span>
+          </div>
+
+          {/* Head */}
+      <svg width="240" height="260" viewBox="-110 -120 240 270">
+            <line x1="0" y1="-158" x2="0" y2="98" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="5 5" />
+            <HeadSilhouette tiltDeg={headAngle} alertProg={alertProg} />
+          </svg>
+
+          {/* Status */}
+          <div style={{
+            fontFamily: MONO, fontSize: 13, letterSpacing: '0.08em',
+            color: corrected ? ACCENT : TEXT3,
+            transition: 'color 0.5s',
+          }}>
+            {corrected ? '✓ Posture corrected' : 'Slouch detected for 5 min'}
+          </div>
+        </div>
+      );
+    }
+
+    function Scene5_Steps() {
+      return (
+        <SceneWrap start={23.1} end={41}>
+          {(t) => {
+            // 3 steps × 6s each
+            const step1T = t;           // 0–6
+            const step2T = t - 6;       // 6–12
+            const step3T = t - 12;      // 12–18
+
+            // Step progress dots
+            const activeStep = t < 6 ? 0 : t < 12 ? 1 : 2;
+
+            return (
+              <div style={{ position: 'absolute', inset: 0 }}>
+                <GridBg op={0.6} />
+
+                {/* Progress dots */}
+                <div style={{
+                  position: 'absolute', bottom: 54, left: '50%',
+                  transform: 'translateX(-50%)',
+                  display: 'flex', gap: 12, alignItems: 'center',
+                  opacity: fadeIn(t, 0.3, 0.5),
+                }}>
+                  {[0, 1, 2].map(i => (
+                    <div key={i} style={{
+                      width: i === activeStep ? 28 : 8,
+                      height: 8, borderRadius: 4,
+                      background: i === activeStep ? ACCENT_HEX : 'rgba(255,255,255,0.15)',
+                      transition: 'all 0.4s',
+                    }} />
+                  ))}
+                </div>
+
+                {/* Steps (render all, opacity handled inside StepLayout) */}
+                {step1T >= 0 && step1T < 6.4 && (
+                  <StepLayout t={step1T} stepNum={1} title={"Calibrate\nonce."}
+                    body={"Sit tall and tap. Slouch and tap. SitTall - Fix Your Posture learns your personal posture range in two seconds."}>
+                    <CalibrationDemo t={step1T} />
+                  </StepLayout>
+                )}
+                {step2T >= 0 && step2T < 6.4 && (
+                  <StepLayout t={step2T} stepNum={2} title={"Wear your\nAirPods."}
+                    body={"Work normally. Sensors read pitch, roll & yaw 60 times per second — completely silent."}>
+                    <SensorHUDDemo t={step2T} />
+                  </StepLayout>
+                )}
+                {step3T >= 0 && step3T < 6.4 && (
+                  <StepLayout t={step3T} stepNum={3} title={"Correct\ninstantly."}
+                    body={"After sustained bad posture, a gentle nudge arrives. Snooze, or just sit up."}>
+                    <NotificationDemo t={step3T} />
+                  </StepLayout>
+                )}
+              </div>
+            );
+          }}
+        </SceneWrap>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // SCENE 6 — PRIVACY  (30.5 – 37s)
+    // ═══════════════════════════════════════════════════════════════════════════════
+    function Scene6_Privacy() {
+      return (
+        <SceneWrap start={40.9} end={46.7}>
+          {(t) => {
+            const zoom = 1 + t * 0.006;
+            const lines = [
+              { text: 'No camera.', at: 0.4 },
+              { text: 'No cloud.', at: 1.4 },
+              { text: 'No account.', at: 2.4 },
+            ];
+            return (
+              <div style={{
+                position: 'absolute', inset: 0,
+                display: 'flex', flexDirection: 'column',
+                alignItems: 'center', justifyContent: 'center',
+                transform: `scale(${zoom})`,
+              }}>
+                <Appear t={t} at={0} style={{ marginBottom: 44, textAlign: 'center' }}>
+                  <div style={{ fontFamily: MONO, fontSize: 13, color: TEXT3, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                    Privacy, by design
+                  </div>
+                </Appear>
+
+                {lines.map(({ text, at }) => {
+                  const p = fadeIn(t, at, 0.5);
+                  return (
+                    <div key={text} style={{
+                      opacity: p,
+                      transform: `translateX(${(1 - p) * -50}px)`,
+                      willChange: 'opacity,transform',
+                      fontFamily: SANS, fontSize: 108,
+                      fontWeight: 600, letterSpacing: '-0.03em',
+                      lineHeight: 1.14, color: TEXT, textAlign: 'center',
+                    }}>
+                      {text}
+                    </div>
+                  );
+                })}
+
+                <Appear t={t} at={3.6} style={{ textAlign: 'center', marginTop: 32 }}>
+                  <div style={{ fontFamily: MONO, fontSize: 15, color: ACCENT, letterSpacing: '0.08em' }}>
+                    All processing on your Mac. Always.
+                  </div>
+                </Appear>
+              </div>
+            );
+          }}
+        </SceneWrap>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // SCENE 7 — END CARD  (36.5 – 40s)
+    // ═══════════════════════════════════════════════════════════════════════════════
+    function Scene7_End() {
+      return (
+        <SceneWrap start={46.6} end={50} fade={0.3}>
+          {(t) => {
+            const logoP = ease(Math.min(1, t / 0.9));
+            const glow = 0.28 + Math.sin(t * 1.1) * 0.05;
+            return (
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                {/* Glow */}
+                <div style={{
+                  position: 'absolute', width: 560, height: 480,
+                  background: `radial-gradient(ellipse, oklch(0.72 0.16 175 / ${glow}) 0%, transparent 65%)`,
+                  pointerEvents: 'none',
+                }} />
+
+                {/* Logo mark */}
+                <div style={{
+                  opacity: logoP, transform: `scale(${0.8 + logoP * 0.2})`,
+                  display: 'flex', flexDirection: 'column', alignItems: 'center',
+                  gap: 22, marginBottom: 60, willChange: 'opacity,transform',
+                }}>
+                  <img src="sittall-logo.png" style={{
+                    width: 96, height: 96, borderRadius: 24,
+                    boxShadow: `0 0 80px oklch(0.52 0.2 255 / 0.6)`,
+                  }} />
+                  <div style={{ fontFamily: MONO, fontSize: 48, fontWeight: 500, letterSpacing: '0.1em', textTransform: 'uppercase', color: TEXT }}>
+                    SitTall - Fix Your Posture
+                  </div>
+                </div>
+
+                {/* CTA button */}
+                <Appear t={t} at={0.7} style={{ textAlign: 'center' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 20 }}>
+                    <div style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 14,
+                      background: TEXT, color: BG,
+                      borderRadius: 14, padding: '18px 40px',
+                      fontFamily: SANS, fontSize: 20, fontWeight: 600,
+                      letterSpacing: '-0.01em',
+                      boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+                    }}>
+                      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path d="M11 3v13M5 10l6 6 6-6" stroke={BG} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                        <line x1="4" y1="19" x2="18" y2="19" stroke={BG} strokeWidth="2.2" strokeLinecap="round" />
+                      </svg>
+                      Download on Mac App Store
+                    </div>
+                    <div style={{ fontFamily: MONO, fontSize: 13, color: TEXT3, letterSpacing: '0.07em' }}>
+                      Free · macOS 14+ · AirPods Pro 2 or AirPods 4 ANC
+                    </div>
+                  </div>
+                </Appear>
+
+                {/* Watermark */}
+                <div style={{
+                  position: 'absolute', bottom: 44,
+                  fontFamily: MONO, fontSize: 13, color: TEXT3,
+                  letterSpacing: '0.08em',
+                  opacity: fadeIn(t, 1.6, 0.6),
+                }}>
+                  sittall.app
+                </div>
+              </div>
+            );
+          }}
+        </SceneWrap>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════════
+    // ROOT
+    // ═══════════════════════════════════════════════════════════════════════════════
+    function SitTallPromo() {
+      const time = useTime();
+      return (
+        <div
+          style={{ position: 'absolute', inset: 0, background: BG }}
+          data-screen-label={`${Math.floor(time)}s`}
+        >
+          <GridBg />
+          <Scene1_Hook />
+          <Scene2_Drift />
+          <Scene3_Reveal />
+          <Scene4_Brand />
+          <Scene5_Steps />
+          <Scene6_Privacy />
+          <Scene7_End />
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(
+      <Stage
+        width={1920}
+        height={1080}
+        duration={50}
+        background={BG}
+        persistKey="sittall-promo-v1"
+        loop={false}
+      >
+        <SitTallPromo />
+      </Stage>
+    );
+  </script>
+</body>
+
+</html>

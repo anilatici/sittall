@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog – SitTall - Fix Your Posture | Posture Tips &amp; Guides for Mac Users</title>
+  <meta name="description" content="Guides and articles about posture health for Mac users, desk workers, and AirPods owners. Learn how to sit better and work pain-free.">
+  <link rel="canonical" href="https://sittall.app/blog/">
+  <meta property="og:site_name" content="SitTall - Fix Your Posture">
+  <meta property="og:title" content="Blog – SitTall - Fix Your Posture | Posture Tips &amp; Guides for Mac Users">
+  <meta property="og:description" content="Guides and articles about posture health for Mac users, desk workers, and AirPods owners. Learn how to sit better and work pain-free.">
+  <meta property="og:image" content="https://sittall.app/icon.png">
+  <meta property="og:url" content="https://sittall.app/blog/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Blog – SitTall - Fix Your Posture | Posture Tips &amp; Guides for Mac Users">
+  <meta name="twitter:description" content="Guides and articles about posture health for Mac users, desk workers, and AirPods owners. Learn how to sit better and work pain-free.">
+  <meta name="twitter:image" content="https://sittall.app/icon.png">
+  <link rel="alternate" type="application/rss+xml" title="SitTall - Fix Your Posture Blog" href="https://sittall.app/blog/feed.xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg-deepest:#070e16;--bg-dark:#0b1822;--bg-section:#0f1f2d;--teal:#6ec9c1;--text:#edf2f5;--text-mid:#7b9fb0;--text-dim:#364e5e;--border:rgba(255,255,255,0.07);--gold:#e6b84a; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Outfit', sans-serif; background: var(--bg-dark); color: var(--text); -webkit-font-smoothing: antialiased; }
+    h1,h2,h3 { font-family: 'Cormorant', serif; font-weight: 400; line-height: 1.1; }
+    ::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-track { background: var(--bg-deepest); } ::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 3px; }
+    .site-nav { position: fixed; inset: 0 0 auto 0; z-index: 200; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1.5rem; padding: 1.25rem 2.5rem; background: rgba(7,14,22,0.82); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+    .nav-brand { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; }
+    .nav-brand img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-brand span { font-family: 'Cormorant', serif; font-size: 1.25rem; font-weight: 500; color: var(--text); }
+    .nav-links { display: flex; align-items: center; justify-content: center; min-width: 0; gap: 2rem; }
+    .nav-links a { font-size: 0.84rem; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-dl { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 1.15rem; background: var(--teal); color: #061218; border-radius: 50px; font-size: 0.83rem; font-weight: 600; text-decoration: none; }
+    .nav-dl:hover { background: #89d9d3; }
+    @media (max-width: 900px) { .site-nav { grid-template-columns: auto auto; } .nav-links { display: none; } }
+    @media (max-width: 640px) { .site-nav { padding: 1rem 1.5rem; } }
+
+    .page-hero { padding: 10rem 2rem 5rem; background: var(--bg-deepest); text-align: center; border-bottom: 1px solid var(--border); }
+    .label { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
+    .page-hero h1 { font-family: 'Cormorant', serif; font-size: clamp(2.8rem,6vw,4.5rem); font-style: italic; font-weight: 400; color: var(--text); margin-bottom: 1rem; }
+    .page-hero p { font-size: 1rem; font-weight: 300; color: var(--text-mid); max-width: 460px; margin: 0 auto; line-height: 1.75; }
+
+    .blog-grid { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem 7rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem; }
+
+    .post-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; text-decoration: none; display: block; transition: border-color 0.3s, background 0.3s, transform 0.3s; }
+    .post-card:hover { border-color: rgba(255,255,255,0.13); background: rgba(255,255,255,0.05); transform: translateY(-3px); }
+    .post-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); background: rgba(110,201,193,0.1); padding: 0.25rem 0.7rem; border-radius: 50px; margin-bottom: 0.9rem; }
+    .post-body { padding: 2rem; }
+    .post-date { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 0.5rem; }
+    .post-title { font-family: 'Cormorant', serif; font-size: 1.5rem; font-style: italic; font-weight: 400; color: var(--text); margin-bottom: 0.7rem; line-height: 1.2; }
+    .post-excerpt { font-size: 0.86rem; font-weight: 300; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.2rem; }
+    .post-read { font-size: 0.8rem; font-weight: 500; color: var(--teal); }
+
+    footer { background: var(--bg-deepest); border-top: 1px solid var(--border); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .foot-brand { font-family: 'Cormorant', serif; font-size: 1.1rem; font-weight: 500; color: var(--text-mid); }
+    .foot-links { display: flex; gap: 2rem; }
+    .foot-links a { font-size: 0.8rem; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    .foot-links a:hover { color: var(--text-mid); }
+    .foot-copy { font-size: 0.75rem; color: var(--text-dim); }
+    .foot-socials { display: flex; gap: 1.2rem; align-items: center; }
+    .foot-socials a { color: var(--text-dim); transition: color 0.2s; display: flex; }
+    .foot-socials a:hover { color: var(--text-mid); }
+    .foot-socials svg { width: 20px; height: 20px; fill: currentColor; }
+    @media (max-width: 640px) { footer { flex-direction: column; text-align: center; } }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHTF6KV4Z5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-ZHTF6KV4Z5");
+    document.addEventListener("click", function(event) {
+      var link = event.target.closest && event.target.closest("a[href*='apps.apple.com/us/app/sittall-fix-your-posture']");
+      if (!link || typeof gtag !== "function") return;
+
+      var openInNewTab = link.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+      var eventSent = false;
+      var followLink = function() {
+        if (eventSent || openInNewTab) return;
+        eventSent = true;
+        window.location.href = link.href;
+      };
+
+      if (!openInNewTab) event.preventDefault();
+
+      gtag("event", "download_mac_click", {
+        link_url: link.href,
+        link_text: (link.getAttribute("aria-label") || link.textContent || "").trim(),
+        page_path: window.location.pathname,
+        page_title: document.title,
+        event_callback: followLink,
+        event_timeout: 1000
+      });
+
+      window.setTimeout(followLink, 1100);
+    });
+  </script>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="/" class="nav-brand" aria-label="Go to SitTall - Fix Your Posture home">
+      <img src="../icon.png" alt="SitTall - Fix Your Posture" width="30" height="30">
+      <span>SitTall - Fix Your Posture</span>
+    </a>
+    <div class="nav-links" aria-label="Site links">
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../terms.html">Terms</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../support.html">Support</a>
+      <a href="/blog/">Blog</a>
+      <a href="mailto:anillatici@gmail.com">Contact</a>
+    </div>
+    <a href="https://apps.apple.com/us/app/sittall-fix-your-posture/id6761648859?mt=12" class="nav-dl">Download</a>
+  </nav>
+
+  <header class="page-hero">
+    <span class="label">Blog</span>
+    <h1>Sit better. Work better.</h1>
+    <p>Guides on posture, ergonomics, and getting the most out of SitTall - Fix Your Posture for Mac.</p>
+  </header>
+
+  <main class="blog-grid">
+
+    <a href="posture-self-test.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Posture</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">How to Tell If Your Posture Is Bad (Simple Self-Test for Desk Workers)</h2>
+        <p class="post-excerpt">Three quick assessments - no equipment needed - that reveal your actual posture quality. Most desk workers are surprised by what they find.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="how-long-sit-before-break.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Health</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">How Long Should You Sit Before Taking a Break? The Science Explained</h2>
+        <p class="post-excerpt">The research on sitting duration is more specific than "sit less." Here's what the evidence actually says about optimal break intervals and what makes a break effective.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="standing-desk-vs-sitting-desk.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Ergonomics</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">Standing Desk vs Sitting Desk: Which Is Better for Posture?</h2>
+        <p class="post-excerpt">Standing desks were hyped as the cure for sedentary work. The research tells a more nuanced story - and the answer depends entirely on how you use them.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="macbook-vs-external-monitor-neck.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Ergonomics</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">MacBook vs External Monitor: Which Is Worse for Your Neck?</h2>
+        <p class="post-excerpt">The answer is clear - and understanding the biomechanics behind it helps you configure either setup in a way that protects your cervical spine for the long term.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="best-desk-accessories-posture-2026.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Ergonomics</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">The Best Desk Accessories to Improve Posture in 2026</h2>
+        <p class="post-excerpt">Ranked by ergonomic impact, not price. The accessories that actually change your biomechanical inputs - and the ones that are mostly theater.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="developers-fix-poor-posture.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Posture</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">How Developers Can Fix Poor Posture Without Leaving Their Desk</h2>
+        <p class="post-excerpt">Deep focus, long sessions, and the mental cost of interruption make generic posture advice useless for developers. Here's what actually fits the workflow.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="what-happens-spine-slouching.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Health</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">What Happens to Your Spine When You Slouch for Hours</h2>
+        <p class="post-excerpt">A tissue-by-tissue breakdown of the structural and physiological changes that occur during prolonged poor posture - and the timeline before damage becomes permanent.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="laptop-posture-vs-desktop-posture.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Ergonomics</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">Laptop Posture vs Desktop Posture: The Key Differences</h2>
+        <p class="post-excerpt">Laptops and desktops impose fundamentally different ergonomic constraints. Understanding what's different - and how to address each - prevents years of cumulative strain.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="forward-head-posture-mac.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Posture</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">How to Fix Forward Head Posture From Using a Mac</h2>
+        <p class="post-excerpt">Every inch your head drifts forward adds 10 lbs of load to your cervical spine. Here's how to identify forward head posture caused by Mac use - and fix it.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="tech-neck-cost-computer.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Health</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">Tech Neck: The Hidden Cost of Working on a Computer</h2>
+        <p class="post-excerpt">Tech neck affects the majority of desk workers and is getting worse. Here's the biomechanics behind it, the long-term consequences, and what actually prevents it.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="mac-desk-ergonomics-setup.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Ergonomics</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">The Ultimate Mac Desk Ergonomics Setup Guide (2026)</h2>
+        <p class="post-excerpt">A complete, practical guide to setting up your Mac workstation for good posture - from chair height and monitor position to active posture monitoring.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="camera-vs-sensor-posture-tracking.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Technology</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">Camera vs Sensor Posture Tracking - Which Is Better?</h2>
+        <p class="post-excerpt">Timers, cameras, and AirPods motion sensors each take a fundamentally different approach to posture monitoring. Here's how they compare in accuracy, privacy, and real-world use.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="neck-pain-after-mac.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Health</span>
+        <p class="post-date">April 8, 2026</p>
+        <h2 class="post-title">Why Your Neck Hurts After Using a Mac All Day (And How to Fix It)</h2>
+        <p class="post-excerpt">End-of-day neck pain has specific mechanical causes - screen height, static position, forward head drift. Here's the anatomy behind it and the targeted fixes that work.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="posture-tips-desk-workers.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Posture</span>
+        <p class="post-date">April 6, 2026</p>
+        <h2 class="post-title">7 Posture Tips for Mac Users Who Sit All Day</h2>
+        <p class="post-excerpt">Your body wasn't designed to sit for eight hours, but your work schedule says otherwise. These evidence-based tips help you stay pain-free at the desk.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="airpods-posture-tracking.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Technology</span>
+        <p class="post-date">April 6, 2026</p>
+        <h2 class="post-title">How AirPods and Beats Motion Sensors Can Monitor Your Posture</h2>
+        <p class="post-excerpt">AirPods 3, AirPods 4, AirPods Pro, AirPods Max, and Beats Fit Pro contain motion sensors designed for head tracking. Here's the science behind using them to detect slouching.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+    <a href="best-posture-reminder-mac.html" class="post-card">
+      <div class="post-body">
+        <span class="post-tag">Comparison</span>
+        <p class="post-date">April 6, 2026</p>
+        <h2 class="post-title">The Best Posture Reminder Apps for Mac in 2026</h2>
+        <p class="post-excerpt">From camera-based trackers to simple break reminders - we compare the main posture corrector apps available for macOS and what makes each one different.</p>
+        <span class="post-read">Read article →</span>
+      </div>
+    </a>
+
+  </main>
+
+  <footer>
+    <span class="foot-brand">SitTall - Fix Your Posture</span>
+    <nav class="foot-links">
+      <a href="../privacy.html">Privacy Policy</a>
+      <a href="../terms.html">Terms</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../support.html">Support</a>
+      <a href="/">Home</a>
+      <a href="mailto:anillatici@gmail.com">Contact</a>
+    </nav>
+    <div class="foot-socials">
+      <a href="https://www.tiktok.com/@sittall.app" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.84 4.84 0 0 1-1-.15z"/></svg></a>
+      <a href="https://x.com/sittall_app" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://www.instagram.com/sit.tall/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+      <a href="https://www.youtube.com/@SitTall-FixYourPosture" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12z"/></svg></a>
+    </div>
+    <span class="foot-copy">© 2026 sittall.app · All rights reserved.</span>
+  </footer>
+</body>
+</html>

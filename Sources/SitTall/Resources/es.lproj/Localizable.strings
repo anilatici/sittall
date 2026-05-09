@@ -1,0 +1,186 @@
+/* ==========================================================================
+   SitTall - Fix Your Posture – English (Base) Localizable Strings
+
+   This file contains all user-facing strings in the app.
+   To add a new language, copy this file to {lang}.lproj/Localizable.strings
+   and translate the values (right side of '=').
+   ========================================================================== */
+
+
+// MARK: – Posture States
+
+"No AirPods detected" = "No AirPods detected";
+"Step 1: Set good posture" = "Step 1: Set good posture";
+"Step 2: Set bad posture" = "Step 2: Set bad posture";
+"Good posture" = "Good posture";
+"Watch your posture" = "Watch your posture";
+"Fix your posture" = "Fix your posture";
+
+
+// MARK: – Motion Availability
+
+"Head motion unavailable" = "Head motion unavailable";
+"AirPods connected" = "AirPods connected";
+"Head motion could not be started on this Mac." = "Head motion could not be started on this Mac.";
+"Connect supported AirPods with head motion to start posture monitoring." = "Connect supported AirPods with head motion to start posture monitoring.";
+"Ready to calibrate or monitor posture." = "Ready to calibrate or monitor posture.";
+
+
+// MARK: – Calibration
+
+"Save Bad Posture" = "Save Bad Posture";
+"Save Good Posture" = "Save Good Posture";
+"Recalibrate Posture" = "Recalibrate Posture";
+"Sit tall with shoulders back, then save your good posture." = "Sit tall with shoulders back, then save your good posture.";
+"Now slouch or crane forward a bit, then save that as bad posture." = "Now slouch or crane forward a bit, then save that as bad posture.";
+
+
+// MARK: – Monitoring Status
+
+"Put your AirPods on to resume monitoring." = "Put your AirPods on to resume monitoring.";
+"Notifications are disabled. Enable them in System Settings to receive reminders." = "Notifications are disabled. Enable them in System Settings to receive reminders.";
+"Monitoring active" = "Monitoring active";
+"Monitoring paused" = "Monitoring paused";
+"Monitoring stopped" = "Monitoring stopped";
+
+
+// MARK: – Menu Controls
+
+"Resume Monitoring" = "Resume Monitoring";
+"Start Monitoring" = "Start Monitoring";
+"Settings…" = "Settings…";
+"Quit SitTall - Fix Your Posture" = "Quit SitTall - Fix Your Posture";
+"Notifications are off for SitTall - Fix Your Posture in System Settings." = "Notifications are off for SitTall - Fix Your Posture in System Settings.";
+
+
+// MARK: – Deviation Gauge
+
+"Posture drift" = "Posture drift";
+"%lld° toward bad posture" = "%lld° toward bad posture";
+
+
+// MARK: – Daily Stats
+
+"Today's Score" = "Today's Score";
+"How scores are calculated" = "How scores are calculated";
+"Slouches" = "Slouches";
+"Fixes" = "Fixes";
+"Slouched" = "Slouched";
+"Share Today's Stats" = "Share Today's Stats";
+
+
+// MARK: – Share Summary
+
+"share.title" = "🧘 SitTall - Fix Your Posture Daily Report";
+"share.healthScore %lld" = "Health Score: %lld%%";
+"share.slouches %lld" = "Slouches: %lld";
+"share.timeSlouched %@" = "Time Slouched: %@";
+"share.corrections %lld" = "Corrections: %lld";
+"share.monitored %@" = "Monitored: %@";
+
+
+// MARK: – Duration Formatting
+
+"%lldh %lldm" = "%lldh %lldm";
+"%lldm" = "%lldm";
+
+
+// MARK: – Notifications
+
+"Snooze 10 min" = "Snooze 10 min";
+"Posture Alert" = "Posture Alert";
+"You've been in a bad position for a while. Sit up straight!" = "You've been in a bad position for a while. Sit up straight!";
+
+
+// MARK: – Authorization Status
+
+"Not requested" = "Not requested";
+"Denied" = "Denied";
+"Allowed" = "Allowed";
+"Provisional" = "Provisional";
+"Ephemeral" = "Ephemeral";
+"Unknown" = "Unknown";
+
+
+// MARK: – Settings: Detection
+
+"Sensitivity" = "Sensitivity";
+"%lld° score" = "%lld° score";
+"5°" = "5°";
+"30°" = "30°";
+"Alert when combined forward drift and side tilt rise above %lld° from your calibrated posture." = "Alert when combined forward drift and side tilt rise above %lld° from your calibrated posture.";
+"Alert after" = "Alert after";
+"15 seconds" = "15 seconds";
+"30 seconds" = "30 seconds";
+"1 minute" = "1 minute";
+"2 minutes" = "2 minutes";
+"Detection" = "Detection";
+
+
+// MARK: – Settings: Notifications
+
+"Remind me at most every" = "Remind me at most every";
+"5 minutes" = "5 minutes";
+"10 minutes" = "10 minutes";
+"15 minutes" = "15 minutes";
+"Authorization" = "Authorization";
+"Notifications" = "Notifications";
+
+
+// MARK: – Settings: General
+
+"Auto-start monitoring when AirPods connect" = "Auto-start monitoring when AirPods connect";
+"Collect local diagnostics" = "Collect local diagnostics";
+"Reset Calibration" = "Reset Calibration";
+"Clear the saved baseline posture. You will need to calibrate again." = "Clear the saved baseline posture. You will need to calibrate again.";
+"General" = "General";
+
+
+// MARK: – Settings: Diagnostics
+
+"Launches" = "Launches";
+"Calibrations" = "Calibrations";
+"Alerts sent" = "Alerts sent";
+"Disconnects" = "Disconnects";
+"Unexpected exits" = "Unexpected exits";
+"Diagnostics" = "Diagnostics";
+"Diagnostics stay on this Mac and are used only for troubleshooting and release validation." = "Diagnostics stay on this Mac and are used only for troubleshooting and release validation.";
+
+
+// MARK: – Settings: How It Works
+
+"How It Works" = "How It Works";
+"Health Score" = "Health Score";
+"The percentage of your monitored time spent in good posture. 100% means no slouching at all. The score resets each day." = "The percentage of your monitored time spent in good posture. 100% means no slouching at all. The score resets each day.";
+"Each time your posture drifts past the sensitivity threshold for longer than the alert delay, it counts as one slouch." = "Each time your posture drifts past the sensitivity threshold for longer than the alert delay, it counts as one slouch.";
+"Each time you correct back to good posture after a slouch is counted as a fix." = "Each time you correct back to good posture after a slouch is counted as a fix.";
+"Time Slouched" = "Time Slouched";
+"Total time spent in bad posture today." = "Total time spent in bad posture today.";
+"Posture Drift" = "Posture Drift";
+"Real-time gauge showing how far your head has tilted from your calibrated good posture, in degrees." = "Real-time gauge showing how far your head has tilted from your calibrated good posture, in degrees.";
+"The degree threshold that triggers a slouch detection. Lower values are more sensitive." = "The degree threshold that triggers a slouch detection. Lower values are more sensitive.";
+"Alert Delay" = "Alert Delay";
+"How long you must be past the threshold before SitTall - Fix Your Posture considers it a slouch and sends a notification." = "How long you must be past the threshold before SitTall - Fix Your Posture considers it a slouch and sends a notification.";
+"Calibration" = "Calibration";
+"Save your good and bad posture so SitTall - Fix Your Posture knows your personal range. Recalibrate any time your seating position changes." = "Save your good and bad posture so SitTall - Fix Your Posture knows your personal range. Recalibrate any time your seating position changes.";
+
+
+// MARK: – Settings: About
+
+"Compatible devices" = "Compatible devices";
+"AirPods Pro (gen 1/2/2 USB-C), AirPods (3rd gen+), AirPods Max" = "AirPods Pro (gen 1/2/2 USB-C), AirPods (3rd gen+), AirPods Max";
+"Sensor" = "Sensor";
+"CMHeadphoneMotionManager: calibrated pitch, roll, and slow drift from the built-in IMU" = "CMHeadphoneMotionManager: calibrated pitch, roll, and slow drift from the built-in IMU";
+"Version" = "Version";
+"About" = "About";
+
+
+// MARK: – Credits
+
+"Credits" = "Credits";
+"German Translation" = "German Translation";
+
+
+// MARK: – Menu Bar
+
+"SitTall - Fix Your Posture" = "SitTall - Fix Your Posture";

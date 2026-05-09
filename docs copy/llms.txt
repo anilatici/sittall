@@ -1,0 +1,43 @@
+# SitTall - Fix Your Posture
+
+> SitTall - Fix Your Posture is a free macOS menu bar app that uses AirPods motion sensors to detect slouching and send gentle posture reminders. No camera. No account. No data collection.
+
+## Key Facts
+- Platform: macOS 14 Sonoma or later
+- Compatible AirPods: AirPods Pro 2nd generation, AirPods 4 with ANC
+- Price: Free
+- Privacy: All motion analysis runs locally on-device. Zero data collection, no network requests, no cloud component.
+- Detection: Uses 6-axis accelerometer and gyroscope in AirPods at 60Hz to track forward head drift, side tilt, and gradual posture collapse.
+
+## Pages
+
+- [Homepage](https://sittall.app/): Product overview, features, and download link
+- [About](https://sittall.app/about.html): Mission and background
+- [Support / FAQ](https://sittall.app/support.html): Frequently asked questions and troubleshooting
+- [Blog](https://sittall.app/blog/): Posture tips, ergonomics guides, and product updates
+- [Privacy Policy](https://sittall.app/privacy.html): Zero data collection policy
+- [Terms & Conditions](https://sittall.app/terms.html): Terms of use
+- [Download on Mac App Store](https://apps.apple.com/us/app/sittall-fix-your-posture/id6761648859?mt=12)
+
+## Blog Articles
+
+- [How AirPods Motion Sensors Can Monitor Your Posture](https://sittall.app/blog/airpods-posture-tracking.html)
+- [Best Posture Reminder Apps for Mac in 2026](https://sittall.app/blog/best-posture-reminder-mac.html)
+- [7 Posture Tips for Mac Users Who Sit All Day](https://sittall.app/blog/posture-tips-desk-workers.html)
+- [How to Tell If Your Posture Is Bad](https://sittall.app/blog/posture-self-test.html)
+- [How Long Should You Sit Before Taking a Break?](https://sittall.app/blog/how-long-sit-before-break.html)
+- [Standing Desk vs Sitting Desk](https://sittall.app/blog/standing-desk-vs-sitting-desk.html)
+- [MacBook vs External Monitor: Which Is Worse for Your Neck?](https://sittall.app/blog/macbook-vs-external-monitor-neck.html)
+- [The Best Desk Accessories to Improve Posture in 2026](https://sittall.app/blog/best-desk-accessories-posture-2026.html)
+- [How Developers Can Fix Poor Posture](https://sittall.app/blog/developers-fix-poor-posture.html)
+- [What Happens to Your Spine When You Slouch](https://sittall.app/blog/what-happens-spine-slouching.html)
+- [Laptop Posture vs Desktop Posture](https://sittall.app/blog/laptop-posture-vs-desktop-posture.html)
+- [How to Fix Forward Head Posture From Using a Mac](https://sittall.app/blog/forward-head-posture-mac.html)
+- [Tech Neck: The Hidden Cost of Working on a Computer](https://sittall.app/blog/tech-neck-cost-computer.html)
+- [The Ultimate Mac Desk Ergonomics Setup Guide](https://sittall.app/blog/mac-desk-ergonomics-setup.html)
+- [Camera vs Sensor Posture Tracking](https://sittall.app/blog/camera-vs-sensor-posture-tracking.html)
+- [Why Your Neck Hurts After Using a Mac All Day](https://sittall.app/blog/neck-pain-after-mac.html)
+
+## Contact
+- Email: hello@sittall.app
+- Website: https://sittall.app

@@ -1,0 +1,183 @@
+/* ==========================================================================
+   SitTall - Fix Your Posture – Turkish Localizable Strings
+   Only values (right side of '=') translated.
+   ========================================================================== */
+
+
+// MARK: – Posture States
+
+"No AirPods detected" = "AirPods bulunamadı";
+"Step 1: Set good posture" = "Adım 1: İyi duruşu ayarla";
+"Step 2: Set bad posture" = "Adım 2: Kötü duruşu ayarla";
+"Good posture" = "İyi duruş";
+"Watch your posture" = "Duruşuna dikkat et";
+"Fix your posture" = "Duruşunu düzelt";
+
+
+// MARK: – Motion Availability
+
+"Head motion unavailable" = "Baş hareketi kullanılamıyor";
+"AirPods connected" = "AirPods bağlandı";
+"Head motion could not be started on this Mac." = "Bu Mac'te baş hareketi başlatılamadı.";
+"Connect supported AirPods with head motion to start posture monitoring." = "Duruş takibini başlatmak için baş hareketi destekleyen AirPods bağlayın.";
+"Ready to calibrate or monitor posture." = "Kalibrasyon veya duruş takibi için hazır.";
+
+
+// MARK: – Calibration
+
+"Save Bad Posture" = "Kötü duruşu kaydet";
+"Save Good Posture" = "İyi duruşu kaydet";
+"Recalibrate Posture" = "Duruşu yeniden kalibre et";
+"Sit tall with shoulders back, then save your good posture." = "Omuzlarını geriye alıp dik otur, sonra iyi duruşunu kaydet.";
+"Now slouch or crane forward a bit, then save that as bad posture." = "Şimdi biraz kamburlaş veya öne eğil, sonra bunu kötü duruş olarak kaydet.";
+
+
+// MARK: – Monitoring Status
+
+"Put your AirPods on to resume monitoring." = "Takibi sürdürmek için AirPods'unu tak.";
+"Notifications are disabled. Enable them in System Settings to receive reminders." = "Bildirimler kapalı. Hatırlatmalar almak için Sistem Ayarları'ndan etkinleştir.";
+"Monitoring active" = "Takip aktif";
+"Monitoring paused" = "Takip duraklatıldı";
+"Monitoring stopped" = "Takip durduruldu";
+
+
+// MARK: – Menu Controls
+
+"Resume Monitoring" = "Takibi sürdür";
+"Start Monitoring" = "Takibi başlat";
+"Settings…" = "Ayarlar…";
+"Quit SitTall - Fix Your Posture" = "SitTall - Fix Your Posture'dan çık";
+"Notifications are off for SitTall - Fix Your Posture in System Settings." = "SitTall - Fix Your Posture için bildirimler Sistem Ayarları'nda kapalı.";
+
+
+// MARK: – Deviation Gauge
+
+"Posture drift" = "Duruş kayması";
+"%lld° toward bad posture" = "%lld° kötü duruş yönünde";
+
+
+// MARK: – Daily Stats
+
+"Today's Score" = "Bugünkü skor";
+"How scores are calculated" = "Skorlar nasıl hesaplanır";
+"Slouches" = "Kamburlaşmalar";
+"Fixes" = "Düzeltmeler";
+"Slouched" = "Kambur duruldu";
+"Share Today's Stats" = "Bugünkü istatistikleri paylaş";
+
+
+// MARK: – Share Summary
+
+"share.title" = "🧘 SitTall - Fix Your Posture Günlük Rapor";
+"share.healthScore %lld" = "Sağlık Skoru: %lld%%";
+"share.slouches %lld" = "Kamburlaşmalar: %lld";
+"share.timeSlouched %@" = "Kötü Duruş Süresi: %@";
+"share.corrections %lld" = "Düzeltmeler: %lld";
+"share.monitored %@" = "Takip Süresi: %@";
+
+
+// MARK: – Duration Formatting
+
+"%lldh %lldm" = "%llds %llddk";
+"%lldm" = "%llddk";
+
+
+// MARK: – Notifications
+
+"Snooze 10 min" = "10 dk ertele";
+"Posture Alert" = "Duruş Uyarısı";
+"You've been in a bad position for a while. Sit up straight!" = "Bir süredir kötü pozisyondasın. Dik otur!";
+
+
+// MARK: – Authorization Status
+
+"Not requested" = "İstenmedi";
+"Denied" = "Reddedildi";
+"Allowed" = "İzin verildi";
+"Provisional" = "Geçici";
+"Ephemeral" = "Geçici Oturum";
+"Unknown" = "Bilinmiyor";
+
+
+// MARK: – Settings: Detection
+
+"Sensitivity" = "Hassasiyet";
+"%lld° score" = "%lld° skor";
+"5°" = "5°";
+"30°" = "30°";
+"Alert when combined forward drift and side tilt rise above %lld° from your calibrated posture." = "İleri kayma ve yana eğim toplamı kalibre edilmiş duruşundan %lld° üzerine çıktığında uyar.";
+"Alert after" = "Uyarı süresi";
+"15 seconds" = "15 saniye";
+"30 seconds" = "30 saniye";
+"1 minute" = "1 dakika";
+"2 minutes" = "2 dakika";
+"Detection" = "Algılama";
+
+
+// MARK: – Settings: Notifications
+
+"Remind me at most every" = "En fazla şu sıklıkta hatırlat";
+"5 minutes" = "5 dakika";
+"10 minutes" = "10 dakika";
+"15 minutes" = "15 dakika";
+"Authorization" = "Yetkilendirme";
+"Notifications" = "Bildirimler";
+
+
+// MARK: – Settings: General
+
+"Auto-start monitoring when AirPods connect" = "AirPods bağlanınca takibi otomatik başlat";
+"Collect local diagnostics" = "Yerel tanılama verilerini topla";
+"Reset Calibration" = "Kalibrasyonu sıfırla";
+"Clear the saved baseline posture. You will need to calibrate again." = "Kaydedilmiş temel duruşu sil. Yeniden kalibrasyon yapman gerekecek.";
+"General" = "Genel";
+
+
+// MARK: – Settings: Diagnostics
+
+"Launches" = "Açılışlar";
+"Calibrations" = "Kalibrasyonlar";
+"Alerts sent" = "Gönderilen uyarılar";
+"Disconnects" = "Bağlantı kesilmeleri";
+"Unexpected exits" = "Beklenmeyen çıkışlar";
+"Diagnostics" = "Tanılama";
+"Diagnostics stay on this Mac and are used only for troubleshooting and release validation." = "Tanılama verileri bu Mac'te kalır ve yalnızca sorun giderme ile sürüm doğrulama için kullanılır.";
+
+
+// MARK: – Settings: How It Works
+
+"How It Works" = "Nasıl Çalışır";
+"Health Score" = "Sağlık Skoru";
+"The percentage of your monitored time spent in good posture. 100% means no slouching at all. The score resets each day." = "Takip edilen sürenin iyi duruşta geçirilen yüzdesi. %100 hiç kamburlaşmadığın anlamına gelir. Skor her gün sıfırlanır.";
+"Each time your posture drifts past the sensitivity threshold for longer than the alert delay, it counts as one slouch." = "Duruşun hassasiyet eşiğini uyarı süresinden daha uzun aşarsa bir kamburlaşma sayılır.";
+"Each time you correct back to good posture after a slouch is counted as a fix." = "Kamburlaşmadan sonra iyi duruşa döndüğünde bir düzeltme sayılır.";
+"Time Slouched" = "Kötü Duruş Süresi";
+"Total time spent in bad posture today." = "Bugün kötü duruşta geçirilen toplam süre.";
+"Posture Drift" = "Duruş Kayması";
+"Real-time gauge showing how far your head has tilted from your calibrated good posture, in degrees." = "Başının kalibre edilmiş iyi duruştan ne kadar saptığını derece olarak gerçek zamanlı gösterir.";
+"The degree threshold that triggers a slouch detection. Lower values are more sensitive." = "Kamburlaşma algılamasını tetikleyen derece eşiği. Daha düşük değerler daha hassastır.";
+"Alert Delay" = "Uyarı Gecikmesi";
+"How long you must be past the threshold before SitTall - Fix Your Posture considers it a slouch and sends a notification." = "SitTall - Fix Your Posture'ın bunu kamburlaşma sayıp bildirim göndermesi için eşik üzerinde ne kadar kalman gerektiği.";
+"Calibration" = "Kalibrasyon";
+"Save your good and bad posture so SitTall - Fix Your Posture knows your personal range. Recalibrate any time your seating position changes." = "SitTall - Fix Your Posture'ın kişisel aralığını bilmesi için iyi ve kötü duruşunu kaydet. Oturma pozisyonun değiştiğinde yeniden kalibre et.";
+
+
+// MARK: – Settings: About
+
+"Compatible devices" = "Uyumlu cihazlar";
+"AirPods Pro (gen 1/2/2 USB-C), AirPods (3rd gen+), AirPods Max" = "AirPods Pro (1./2./2 USB-C nesil), AirPods (3. nesil+), AirPods Max";
+"Sensor" = "Sensör";
+"CMHeadphoneMotionManager: calibrated pitch, roll, and slow drift from the built-in IMU" = "CMHeadphoneMotionManager: dahili IMU'dan kalibre edilmiş pitch, roll ve yavaş kayma";
+"Version" = "Sürüm";
+"About" = "Hakkında";
+
+
+// MARK: – Katkıda Bulunanlar
+
+"Credits" = "Katkıda Bulunanlar";
+"German Translation" = "Almanca Çeviri";
+
+
+// MARK: – Menu Bar
+
+"SitTall - Fix Your Posture" = "SitTall - Fix Your Posture";

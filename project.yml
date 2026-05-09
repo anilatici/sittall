@@ -1,0 +1,63 @@
+name: SitTall
+options:
+  bundleIdPrefix: app.sittall
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+    DEVELOPMENT_TEAM: G9XX4F8SLP
+targets:
+  PostureCoreMac:
+    type: framework
+    platform: macOS
+    sources:
+      - Shared/PostureCore
+    settings:
+      base:
+        PRODUCT_NAME: PostureCore
+        PRODUCT_MODULE_NAME: PostureCore
+        PRODUCT_BUNDLE_IDENTIFIER: app.sittall.PostureCoreMac
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
+  SitTall:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/SitTall
+        excludes:
+          - Resources
+      - path: Sources/SitTall/Resources
+        buildPhase: resources
+    dependencies:
+      - target: PostureCoreMac
+    settings:
+      base:
+        PRODUCT_NAME: SitTall
+        PRODUCT_MODULE_NAME: SitTall
+        PRODUCT_BUNDLE_IDENTIFIER: app.sittall.SitTall
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: SitTall - Fix Your Posture
+        INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_NSMotionUsageDescription: SitTall - Fix Your Posture uses AirPods head motion to detect posture drift and send local reminders.
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 2
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: macOS/SitTall/SitTall.entitlements
+        MACOSX_DEPLOYMENT_TARGET: 14.0
+    scheme:
+      testTargets:
+        - PostureCoreMacTests
+  PostureCoreMacTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - Tests/PostureCoreTests
+    dependencies:
+      - target: PostureCoreMac
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.sittall.PostureCoreMacTests
+        GENERATE_INFOPLIST_FILE: YES

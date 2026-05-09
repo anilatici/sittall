@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner with SitTall - Fix Your Posture</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon.ico">
+  <link rel="apple-touch-icon" href="./assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:           #050a10;
+      --bg-elevated:  rgba(255,255,255,0.03);
+      --bg-glass:     rgba(255,255,255,0.04);
+      --bg-glass-h:   rgba(255,255,255,0.07);
+      --teal:         #6266df;
+      --teal-soft:    #8d91ff;
+      --teal-dim:     rgba(98,102,223,0.08);
+      --teal-glow:    rgba(98,102,223,0.22);
+      --gold:         #e6b84a;
+      --gold-soft:    #f0cc6e;
+      --gold-dim:     rgba(230,184,74,0.06);
+      --gold-glow:    rgba(230,184,74,0.15);
+      --text:         #f0f4f7;
+      --text-2:       #94b3c4;
+      --text-3:       #4a6a7d;
+      --border:       rgba(255,255,255,0.06);
+      --border-h:     rgba(255,255,255,0.12);
+      --radius:       28px;
+      --radius-sm:    20px;
+      --spring:       cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease:         cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    ::-webkit-scrollbar { width: 0; }
+
+    /* ─── LAYOUT ─── */
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .wrap-wide {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    /* ─── REVEAL ─── */
+    .rv {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .rv.vis {
+      opacity: 1;
+      transform: none;
+    }
+    .rv[data-d="1"] { transition-delay: 0.06s; }
+    .rv[data-d="2"] { transition-delay: 0.12s; }
+    .rv[data-d="3"] { transition-delay: 0.18s; }
+    .rv[data-d="4"] { transition-delay: 0.24s; }
+    .rv[data-d="5"] { transition-delay: 0.30s; }
+    .rv[data-d="6"] { transition-delay: 0.36s; }
+    .rv[data-d="7"] { transition-delay: 0.42s; }
+    .rv[data-d="8"] { transition-delay: 0.48s; }
+
+    /* ─── GRAIN ─── */
+    .grain {
+      position: fixed;
+      inset: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.018;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─────────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 28px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ambient mesh */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 45% at 20% 30%, rgba(110,201,193,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 50% at 80% 70%, rgba(230,184,74,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 50% 110%, rgba(110,201,193,0.04) 0%, transparent 60%);
+      animation: mesh 16s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes mesh {
+      from { opacity: 0.6; transform: scale(1) rotate(0deg); }
+      to   { opacity: 1;   transform: scale(1.04) rotate(0.5deg); }
+    }
+
+    .hero-icon {
+      position: relative;
+      margin-bottom: 48px;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .launch-mark {
+      --mark-size: 192px;
+      position: relative;
+      width: var(--mark-size);
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 32px;
+      filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.36)) drop-shadow(0 0 30px rgba(98,102,223,0.18));
+    }
+
+    .launch-mark.small { --mark-size: 58px; }
+    .launch-mark.tiny { --mark-size: 28px; filter: none; }
+    .launch-mark img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: inherit;
+    }
+
+    .launch-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .launch-chip-copy strong {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .launch-chip-copy span {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      z-index: 2;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-size: clamp(3.2rem, 9vw, 5.5rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-soft) 50%, var(--gold-soft) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: var(--text-2);
+      max-width: 480px;
+      line-height: 1.7;
+      z-index: 2;
+      position: relative;
+      font-weight: 300;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-3);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--text-3), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    /* ─────────────────────────────────────────────
+       SECTION PRIMITIVES
+    ───────────────────────────────────────────── */
+    .sec-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--teal);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sec-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--teal);
+      opacity: 0.5;
+    }
+    .sec-label.gold { color: var(--gold); }
+    .sec-label.gold::before { background: var(--gold); }
+
+    .sec-title {
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
+    }
+
+    .sec-desc {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      max-width: 560px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─────────────────────────────────────────────
+       PRODUCT SECTION
+    ───────────────────────────────────────────── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .p-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      transition: border-color 0.4s, transform 0.5s var(--spring), background 0.4s;
+    }
+
+    .p-card:hover {
+      border-color: var(--border-h);
+      background: var(--bg-glass-h);
+      transform: translateY(-4px);
+    }
+
+    .p-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background: var(--teal-dim);
+      border: 1px solid rgba(110,201,193,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--teal);
+    }
+
+    .p-card-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .p-card h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .p-card p {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    .media-stage {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .media-video {
+      position: relative;
+      min-height: 100%;
+      border-radius: calc(var(--radius) + 8px);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at top left, rgba(110,201,193,0.16), transparent 38%),
+        radial-gradient(circle at bottom right, rgba(230,184,74,0.14), transparent 44%),
+        #071018;
+      box-shadow: 0 28px 90px rgba(0,0,0,0.35);
+      isolation: isolate;
+    }
+
+    .media-video::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4,10,15,0.02), rgba(4,10,15,0.46));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .media-video video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      background: #071018;
+    }
+
+    .media-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(4,10,15,0.72);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text);
+    }
+
+    .media-caption {
+      position: relative;
+      z-index: 2;
+      max-width: none;
+      margin: 0;
+      padding: 18px 20px 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(4,10,15,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .media-caption strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .media-caption p {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    .media-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .media-card {
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .media-card::before {
+      content: '';
+      position: absolute;
+      inset: auto -10% -55% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(110,201,193,0.2), transparent 68%);
+      pointer-events: none;
+    }
+
+    .media-card.gold::before {
+      background: radial-gradient(circle, rgba(230,184,74,0.18), transparent 68%);
+    }
+
+    .media-card-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-3);
+    }
+
+    .media-card-label::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.45;
+    }
+
+    .media-card h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .media-card p {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      line-height: 1.65;
+      font-weight: 300;
+      max-width: 28ch;
+    }
+
+    .media-card-mark {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .media-card-mark span {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    /* ─────────────────────────────────────────────
+       WHY CREATORS - editorial numbered list
+    ───────────────────────────────────────────── */
+    .reasons {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .reason-item {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 0 24px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .reason-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .reason-num {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.4rem;
+      color: var(--text-3);
+      line-height: 1;
+      padding-top: 2px;
+      transition: color 0.4s;
+    }
+
+    .reason-item:hover .reason-num {
+      color: var(--teal);
+    }
+
+    .reason-content h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+
+    .reason-content p {
+      font-size: 0.92rem;
+      color: var(--text-2);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ─────────────────────────────────────────────
+       DIFFERENTIATORS - visual check/x
+    ───────────────────────────────────────────── */
+    .diff-section {
+      background: var(--bg-elevated);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .diff-table {
+      margin-top: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .diff-head {
+      display: grid;
+      grid-template-columns: 1fr 120px 120px;
+      padding: 16px 24px;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .diff-head span {
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-3);
+    }
+
+    .diff-head span:nth-child(2) { text-align: center; color: var(--teal); }
+    .diff-head span:last-child { text-align: center; }
+
+    .diff-r {
+      display: grid;
+      grid-template-columns: 1fr 120px 120px;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .diff-r:last-child { border-bottom: none; }
+    .diff-r:hover { background: rgba(255,255,255,0.015); }
+
+    .diff-r span:first-child {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .diff-r span:nth-child(2),
+    .diff-r span:last-child {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .check { color: var(--teal); }
+    .x { color: var(--text-3); opacity: 0.5; }
+
+    /* ─────────────────────────────────────────────
+       CONTENT IDEAS - horizontal scroll cards
+    ───────────────────────────────────────────── */
+    .ideas-scroll {
+      margin-top: 48px;
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 4px 0 20px;
+      scrollbar-width: none;
+    }
+    .ideas-scroll::-webkit-scrollbar { display: none; }
+
+    .idea {
+      flex: 0 0 320px;
+      scroll-snap-align: start;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      transition: border-color 0.4s, transform 0.5s var(--spring);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .idea:hover {
+      border-color: var(--border-h);
+      transform: translateY(-4px);
+    }
+
+    .idea-tag {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+
+    .idea-tag.yt { background: rgba(255,0,0,0.08); color: #ff6b6b; border: 1px solid rgba(255,0,0,0.12); }
+    .idea-tag.tk { background: rgba(110,201,193,0.08); color: var(--teal); border: 1px solid rgba(110,201,193,0.12); }
+    .idea-tag.desk { background: rgba(230,184,74,0.08); color: var(--gold); border: 1px solid rgba(230,184,74,0.12); }
+    .idea-tag.reel { background: rgba(180,130,255,0.08); color: #c4a0ff; border: 1px solid rgba(180,130,255,0.12); }
+
+    .idea h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .idea-hook {
+      font-size: 0.85rem;
+      color: var(--teal);
+      font-style: italic;
+      margin-bottom: 12px;
+      padding-left: 12px;
+      border-left: 2px solid rgba(110,201,193,0.3);
+      line-height: 1.5;
+    }
+
+    .idea p:last-child {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.6;
+      font-weight: 300;
+      margin-top: auto;
+    }
+
+    .ideas-hint {
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: var(--text-3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ideas-hint svg {
+      width: 16px;
+      height: 16px;
+      animation: swipeHint 2s ease-in-out infinite;
+    }
+    @keyframes swipeHint {
+      0%, 100% { transform: translateX(0); opacity: 0.5; }
+      50% { transform: translateX(6px); opacity: 1; }
+    }
+
+    /* ─────────────────────────────────────────────
+       OFFER - 2-col glass cards
+    ───────────────────────────────────────────── */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .offer-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: border-color 0.4s, transform 0.5s var(--spring);
+    }
+
+    .offer-card:hover {
+      border-color: var(--border-h);
+      transform: translateY(-3px);
+    }
+
+    .offer-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 1.15rem;
+    }
+
+    .offer-card-icon.t { background: var(--teal-dim); border: 1px solid rgba(110,201,193,0.1); }
+    .offer-card-icon.g { background: var(--gold-dim); border: 1px solid rgba(230,184,74,0.1); }
+
+    .offer-card h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .offer-card p {
+      font-size: 0.82rem;
+      color: var(--text-2);
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    .offer-note {
+      grid-column: 1 / -1;
+      margin-top: 4px;
+      padding: 24px 28px;
+      background: linear-gradient(135deg, rgba(230,184,74,0.06), rgba(230,184,74,0.02));
+      border: 1px solid rgba(230,184,74,0.1);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .offer-note-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(230,184,74,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .offer-note p {
+      font-size: 0.88rem;
+      color: var(--gold-soft);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .offer-note strong {
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    /* ─────────────────────────────────────────────
+       BRAND
+    ───────────────────────────────────────────── */
+    .brand-card {
+      margin-top: 48px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand-icon {
+      flex-shrink: 0;
+      width: 64px;
+      height: 64px;
+    }
+
+
+    .brand-meta h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .brand-meta p {
+      font-size: 0.88rem;
+      color: var(--text-2);
+      font-weight: 300;
+    }
+
+    .brand-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .b-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s, transform 0.4s var(--spring);
+    }
+
+    .b-link:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .b-link svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    /* ─────────────────────────────────────────────
+       CTA
+    ───────────────────────────────────────────── */
+    .cta {
+      text-align: center;
+      padding: 120px 28px 140px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 50% 80%, rgba(230,184,74,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 30% 40%, rgba(110,201,193,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta h2 {
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .cta h2 em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-soft) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .cta-sub {
+      font-size: 1.05rem;
+      color: var(--text-2);
+      margin-bottom: 44px;
+      font-weight: 300;
+      position: relative;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: var(--teal);
+      color: var(--bg);
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.4s var(--spring), box-shadow 0.4s;
+      box-shadow: 0 0 0 0 var(--teal-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px var(--teal-glow);
+    }
+
+    .btn-primary svg { width: 16px; height: 16px; }
+
+    .btn-ghost {
+      font-size: 0.88rem;
+      color: var(--text-3);
+      text-decoration: none;
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .btn-ghost:hover { color: var(--text-2); }
+
+    /* ─── SECTION DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--border) 20%, var(--border) 80%, transparent 100%);
+    }
+
+    /* ─────────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      section { padding: 80px 0; }
+      .product-grid { grid-template-columns: 1fr 1fr; }
+      .media-stage { grid-template-columns: 1fr; }
+      .offer-grid { grid-template-columns: 1fr 1fr; }
+      .diff-head, .diff-r {
+        grid-template-columns: 1fr 80px 80px;
+      }
+      .diff-r span:first-child { font-size: 0.82rem; }
+      .idea { flex: 0 0 280px; }
+    }
+
+    @media (max-width: 540px) {
+      .hero { padding: 100px 24px 60px; min-height: 90svh; }
+      .hero h1 { font-size: clamp(2.6rem, 11vw, 3.6rem); }
+      section { padding: 64px 0; }
+      .product-grid { grid-template-columns: 1fr; gap: 10px; }
+      .media-video video { min-height: 300px; }
+      .media-card { padding: 22px 20px; }
+      .media-caption {
+        padding: 16px 18px 18px;
+      }
+      .offer-grid { grid-template-columns: 1fr; }
+      .reason-item { grid-template-columns: 40px 1fr; gap: 0 16px; padding: 28px 0; }
+      .reason-num { font-size: 1.8rem; }
+      .diff-head, .diff-r {
+        grid-template-columns: 1fr 60px 60px;
+        padding: 14px 16px;
+      }
+      .diff-head span { font-size: 0.6rem; }
+      .diff-r span:first-child { font-size: 0.78rem; }
+      .brand-card { flex-direction: column; text-align: center; padding: 28px 24px; }
+      .brand-links { justify-content: center; }
+      .cta { padding: 80px 24px 100px; }
+      .idea { flex: 0 0 260px; padding: 24px 20px; }
+      .offer-note { flex-direction: column; text-align: center; }
+      .hero-scroll { display: none; }
+      .launch-mark { --mark-size: 156px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-icon rv">
+      <div class="launch-mark" aria-hidden="true">
+        <img src="./assets/icon.png" alt="">
+      </div>
+    </div>
+
+    <div class="hero-tag rv" data-d="1">
+      <span>Creator Partnership</span>
+    </div>
+
+    <h1 class="rv" data-d="2">Let's work<br><em>together.</em></h1>
+
+    <p class="hero-sub rv" data-d="3">SitTall - Fix Your Posture turns AirPods into a posture coach. This page is a launch-ready partner brief for creators in health, productivity, and tech.</p>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════ THE PRODUCT ═══════ -->
+  <section>
+    <div class="wrap">
+      <div class="sec-label rv">The product</div>
+      <h2 class="sec-title rv" data-d="1">Your AirPods already know<br>when you slouch.</h2>
+      <p class="sec-desc rv" data-d="2">A macOS menu bar app that uses your AirPods' built-in motion sensors to detect bad posture and send a gentle nudge. Calibrate once. Works forever. No cameras. No wearables.</p>
+    </div>
+
+    <div class="wrap-wide">
+      <div class="product-grid">
+        <div class="p-card rv" data-d="3">
+          <div class="p-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Real-time tracking</h3>
+          <p>Forward drift, side tilt, and gradual collapse, detected 60 times per second.</p>
+        </div>
+        <div class="p-card rv" data-d="4">
+          <div class="p-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3>Smart reminders</h3>
+          <p>Alerts only when bad posture persists. Never for a quick glance down.</p>
+        </div>
+        <div class="p-card rv" data-d="5">
+          <div class="p-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+          </div>
+          <h3>Daily stats</h3>
+          <p>Slouch count, corrections, health score. Shareable as a daily report.</p>
+        </div>
+        <div class="p-card rv" data-d="6">
+          <div class="p-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Fully private</h3>
+          <p>All processing on-device. No account. No data ever leaves your Mac.</p>
+        </div>
+      </div>
+
+      <div class="media-stage rv" data-d="7">
+        <figure class="media-video">
+          <div class="media-badge">
+            <div class="launch-mark tiny" aria-hidden="true">
+              <img src="./assets/icon.png" alt="">
+            </div>
+            <span>Demo trailer</span>
+          </div>
+          <video controls playsinline preload="metadata">
+            <source src="assets/videos/demo-trailer.mp4" type="video/mp4">
+          </video>
+          <figcaption class="media-caption">
+            <strong>See SitTall - Fix Your Posture in action.</strong>
+            <p>A quick look at how posture tracking, reminders, and daily stats work together in the app.</p>
+          </figcaption>
+        </figure>
+
+        <div class="media-stack" aria-label="Product highlights">
+          <article class="media-card">
+            <div class="media-card-label">How it feels</div>
+            <h3>Quiet in the background. Useful when it matters.</h3>
+            <p>SitTall - Fix Your Posture is designed to stay out of the way until your posture drifts for long enough that a reminder is actually helpful.</p>
+            <div class="media-card-mark">
+              <div class="launch-mark small" aria-hidden="true">
+                <img src="./assets/icon.png" alt="">
+              </div>
+              <span>Native macOS app</span>
+            </div>
+          </article>
+
+          <article class="media-card gold">
+            <div class="media-card-label">Why it stands out</div>
+            <h3>It uses hardware people already own.</h3>
+            <p>That makes the hook simple: AirPods become a posture tool without extra wearables, cameras, or complicated setup.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════ WHY CREATORS ═══════ -->
+  <section>
+    <div class="wrap">
+      <div class="sec-label rv">Why it works</div>
+      <h2 class="sec-title rv" data-d="1">Simple product.<br>Easy story to tell.</h2>
+      <p class="sec-desc rv" data-d="2">SitTall - Fix Your Posture is easy to explain, easy to try, and instantly relevant to anyone who spends hours at a desk.</p>
+
+      <div class="reasons">
+        <div class="reason-item rv" data-d="3">
+          <div class="reason-num">01</div>
+          <div class="reason-content">
+            <h3>Your audience already owns AirPods.</h3>
+            <p>No barrier to try. Viewers don't need to buy anything new, just download and go. That's a much easier sell than a $100 wearable.</p>
+          </div>
+        </div>
+        <div class="reason-item rv" data-d="4">
+          <div class="reason-num">02</div>
+          <div class="reason-content">
+            <h3>It's invisible until it matters.</h3>
+            <p>Works silently in the background. No complex setup footage needed. Show the notification pop up. That's the moment.</p>
+          </div>
+        </div>
+        <div class="reason-item rv" data-d="5">
+          <div class="reason-num">03</div>
+          <div class="reason-content">
+            <h3>The daily report is shareable.</h3>
+            <p>Built-in content moment. Screenshot your posture score, share it, challenge your audience. The health score is designed to be posted.</p>
+          </div>
+        </div>
+        <div class="reason-item rv" data-d="6">
+          <div class="reason-num">04</div>
+          <div class="reason-content">
+            <h3>Posture is universal.</h3>
+            <p>Everyone who sits at a desk relates. Not niche. Not polarizing. High engagement potential across any audience.</p>
+          </div>
+        </div>
+        <div class="reason-item rv" data-d="7">
+          <div class="reason-num">05</div>
+          <div class="reason-content">
+            <h3>It's new.</h3>
+            <p>SitTall - Fix Your Posture hasn't been covered by hundreds of creators yet. Early partners get first-mover advantage on a genuinely fresh product.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════ DIFFERENTIATORS ═══════ -->
+  <section class="diff-section">
+    <div class="wrap">
+      <div class="sec-label gold rv">The difference</div>
+      <h2 class="sec-title rv" data-d="1">Not another generic<br>health app.</h2>
+      <p class="sec-desc rv" data-d="2">Most posture apps need a camera pointed at you or a separate wearable. SitTall - Fix Your Posture uses hardware your audience already owns.</p>
+
+      <div class="diff-table rv" data-d="3">
+        <div class="diff-head">
+          <span></span>
+          <span>SitTall - Fix Your Posture</span>
+          <span>Others</span>
+        </div>
+        <div class="diff-r">
+          <span>Uses existing AirPods</span>
+          <span class="check">&#10003;</span>
+          <span class="x">&#10005;</span>
+        </div>
+        <div class="diff-r">
+          <span>No camera required</span>
+          <span class="check">&#10003;</span>
+          <span class="x">&#10005;</span>
+        </div>
+        <div class="diff-r">
+          <span>No wearable to buy</span>
+          <span class="check">&#10003;</span>
+          <span class="x">&#10005;</span>
+        </div>
+        <div class="diff-r">
+          <span>Menu bar, totally invisible</span>
+          <span class="check">&#10003;</span>
+          <span class="x">&#10005;</span>
+        </div>
+        <div class="diff-r">
+          <span>One-time calibration</span>
+          <span class="check">&#10003;</span>
+          <span class="x">&#10005;</span>
+        </div>
+        <div class="diff-r">
+          <span>Native macOS, lightweight</span>
+          <span class="check">&#10003;</span>
+          <span class="x">&#10005;</span>
+        </div>
+        <div class="diff-r">
+          <span>Shareable daily reports</span>
+          <span class="check">&#10003;</span>
+          <span class="x">&#10005;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CONTENT IDEAS ═══════ -->
+  <section>
+    <div class="wrap">
+      <div class="sec-label rv">Content ideas</div>
+      <h2 class="sec-title rv" data-d="1">Pick a format.<br>Make it yours.</h2>
+      <p class="sec-desc rv" data-d="2">Angles that work. Adapt to your style, or pitch us something completely different.</p>
+    </div>
+
+    <div class="wrap-wide">
+      <div class="ideas-scroll rv" data-d="3">
+        <div class="idea">
+          <span class="idea-tag yt">YouTube / TikTok</span>
+          <h3>"I let my AirPods fix my posture for a week"</h3>
+          <div class="idea-hook">"I didn't know my AirPods could do this."</div>
+          <p>Lifestyle experiment: track progress over 7 days, share daily report screenshots showing improvement. The transformation arc writes itself.</p>
+        </div>
+        <div class="idea">
+          <span class="idea-tag tk">TikTok / Reels</span>
+          <h3>"Apps that actually changed my daily routine"</h3>
+          <div class="idea-hook">"Apps on my Mac I can't live without."</div>
+          <p>Feature SitTall - Fix Your Posture alongside 3-4 other apps. Natural, not forced. The AirPods angle makes it the most interesting one on the list.</p>
+        </div>
+        <div class="idea">
+          <span class="idea-tag desk">Desk Tour</span>
+          <h3>"My desk setup but make it healthy"</h3>
+          <div class="idea-hook">"My ergonomic setup costs $0 in new hardware."</div>
+          <p>Show the physical setup, then reveal the software layer. SitTall - Fix Your Posture as the invisible posture layer that ties it all together.</p>
+        </div>
+        <div class="idea">
+          <span class="idea-tag reel">Short-form Reel</span>
+          <h3>"Reacting to my posture data"</h3>
+          <div class="idea-hook">"My AirPods tracked how much I slouch and..."</div>
+          <p>Genuine reaction to the daily report. Relatable, funny, shareable. The health score is the punchline.</p>
+        </div>
+        <div class="idea">
+          <span class="idea-tag tk">TikTok Listicle</span>
+          <h3>"Things your AirPods can do that you didn't know"</h3>
+          <div class="idea-hook">"AirPods hidden features you're not using."</div>
+          <p>SitTall - Fix Your Posture as the standout. The head tracking angle is genuinely surprising, with high save and share potential.</p>
+        </div>
+        <div class="idea">
+          <span class="idea-tag yt">Challenge</span>
+          <h3>"Posture check challenge"</h3>
+          <div class="idea-hook">"Can you go a full workday without slouching?"</div>
+          <p>Install SitTall - Fix Your Posture, try to hit a perfect posture score. Share results. Tag friends. Simple, repeatable, viral format.</p>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="ideas-hint rv" data-d="4">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          Swipe for more ideas
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════ WHAT YOU GET ═══════ -->
+  <section>
+    <div class="wrap">
+      <div class="sec-label gold rv">What you get</div>
+      <h2 class="sec-title rv" data-d="1">No vague "let's chat" energy.<br>Here's the deal.</h2>
+    </div>
+
+    <div class="wrap-wide">
+      <div class="offer-grid">
+        <div class="offer-card rv" data-d="2">
+          <div class="offer-card-icon g">&#9734;</div>
+          <h3>Lifetime SitTall - Fix Your Posture</h3>
+          <p>Full access to every feature, forever. No trial. No expiration.</p>
+        </div>
+        <div class="offer-card rv" data-d="3">
+          <div class="offer-card-icon t">&#9741;</div>
+          <h3>Direct support</h3>
+          <p>If you want context, setup help, or a tighter angle for your content, you can reach out directly and get a real response.</p>
+        </div>
+        <div class="offer-card rv" data-d="4">
+          <div class="offer-card-icon g">&#9733;</div>
+          <h3>Launch support</h3>
+          <p>Direct support, product context, and assets if you want help shaping the angle for your content.</p>
+        </div>
+        <div class="offer-card rv" data-d="5">
+          <div class="offer-card-icon t">&#9888;</div>
+          <h3>Early access</h3>
+          <p>Beta builds before public release. Be the first to cover new stuff.</p>
+        </div>
+        <div class="offer-card rv" data-d="6">
+          <div class="offer-card-icon g">&#9998;</div>
+          <h3>Cross-promotion</h3>
+          <p>Reposting and tagging from SitTall - Fix Your Posture's official accounts. We amplify you.</p>
+        </div>
+        <div class="offer-card rv" data-d="7">
+          <div class="offer-card-icon t">&#10022;</div>
+          <h3>Open to your ideas</h3>
+          <p>Got a format that works better for your audience? We're flexible. Pitch us.</p>
+        </div>
+        <div class="offer-note rv" data-d="8">
+          <div class="offer-note-icon">&#10024;</div>
+          <p><strong>For larger creators:</strong> We're open to sponsored post fees and long-term ambassador roles with monthly content. Let's talk about what works for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════ THE BRAND ═══════ -->
+  <section>
+    <div class="wrap">
+      <div class="sec-label rv">The brand</div>
+      <h2 class="sec-title rv" data-d="1">Indie-built. Real product.<br>Real users.</h2>
+
+      <div class="brand-card rv" data-d="2">
+        <div class="brand-icon" aria-hidden="true">
+          <div class="launch-mark small">
+            <img src="./assets/icon.png" alt="">
+          </div>
+        </div>
+        <div class="brand-meta">
+          <h3>SitTall - Fix Your Posture</h3>
+          <p>Solo indie app, crafted with care. Available on the Mac App Store and positioned for creator launch outreach.</p>
+        </div>
+      </div>
+
+      <div class="brand-links rv" data-d="3">
+        <a href="https://apps.apple.com/us/app/sittall-fix-your-posture/id6761648859?mt=12" class="b-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Mac App Store
+        </a>
+        <a href="https://sittall.app" class="b-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          sittall.app
+        </a>
+        <a href="mailto:anillatici@gmail.com" class="b-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          anillatici@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA ═══════ -->
+  <section class="cta">
+    <h2 class="rv">Interested?<br>Let's <em>make it happen.</em></h2>
+    <p class="cta-sub rv" data-d="1">Reply to the DM that brought you here, or reach out directly.</p>
+    <div class="cta-buttons rv" data-d="2">
+      <a href="mailto:anillatici@gmail.com" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        anillatici@gmail.com
+      </a>
+      <a href="#" class="btn-ghost">or just reply to the message that sent you here</a>
+    </div>
+  </section>
+
+  <script>
+    /* ─── Intersection reveal ─── */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('vis');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+    /* ─── Parallax hero icon on scroll ─── */
+    const heroIcon = document.querySelector('.hero-icon');
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const y = window.scrollY;
+          if (y < window.innerHeight) {
+            heroIcon.style.transform = `translateY(${y * 0.15}px) scale(${1 - y * 0.0003})`;
+            heroIcon.style.opacity = 1 - y * 0.002;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+
+</body>
+</html>

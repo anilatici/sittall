@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SitTall - Fix Your Posture Influencer Brief</title>
+  <meta name="description" content="One-page A4 influencer brief for SitTall - Fix Your Posture, the privacy-first posture reminder for Mac powered by supported AirPods.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Instrument+Sans:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Instrument+Sans:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;600&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --ink: #15222b;
+      --ink-soft: #5f717c;
+      --paper: #f5f1e8;
+      --paper-top: #fbf8f1;
+      --sea: #75c6c1;
+      --sea-deep: #2f7f7a;
+      --sand: #d7c09a;
+      --line: rgba(21,34,43,0.12);
+      --line-strong: rgba(21,34,43,0.2);
+      --white: #ffffff;
+      --shadow: 0 32px 80px rgba(21,34,43,0.13);
+    }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      font-family: 'Instrument Sans', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(117,198,193,0.22), transparent 22%),
+        linear-gradient(180deg, #edf2f1 0%, #f5f1e8 48%, #eee5d8 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(251,248,241,0.98), rgba(245,241,232,0.98)),
+        var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .page::before {
+      content: '';
+      position: absolute;
+      top: -18mm;
+      right: -26mm;
+      width: 118mm;
+      height: 118mm;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(117,198,193,0.36), rgba(117,198,193,0.04) 62%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .page::after {
+      content: '';
+      position: absolute;
+      left: 10mm;
+      right: 10mm;
+      top: 14mm;
+      height: 0.35mm;
+      background: linear-gradient(90deg, transparent, rgba(21,34,43,0.1), transparent);
+      pointer-events: none;
+    }
+
+    .surface {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-rows: auto auto auto minmax(0, 1fr) auto auto;
+      height: 100%;
+      padding: 12mm 12mm 10mm;
+      gap: 4.2mm;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8mm;
+      padding-top: 3mm;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 3.5mm;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 10.5mm;
+      height: 10.5mm;
+      border-radius: 3mm;
+      box-shadow: 0 8px 18px rgba(21,34,43,0.14);
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 0.7mm;
+    }
+
+    .brand-copy strong {
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .meta,
+    .brand-copy span,
+    .label,
+    .tagline,
+    .mini-label {
+      font-family: 'Azeret Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .brand-copy span,
+    .meta,
+    .mini-label {
+      color: var(--ink-soft);
+      font-size: 0.68rem;
+    }
+
+    .meta {
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 70mm;
+      gap: 6mm;
+      align-items: start;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 2.6mm;
+      padding-top: 1mm;
+    }
+
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 2.5mm;
+      color: var(--ink-soft);
+      font-size: 0.7rem;
+    }
+
+    .label::before {
+      content: '';
+      width: 7mm;
+      height: 0.35mm;
+      background: currentColor;
+    }
+
+    .title {
+      max-width: 7.2ch;
+      font-family: 'Fraunces', serif;
+      font-size: 2.9rem;
+      font-weight: 400;
+      line-height: 0.88;
+      letter-spacing: -0.045em;
+    }
+
+    .title em {
+      font-style: italic;
+      color: var(--sea-deep);
+    }
+
+    .tagline {
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+    }
+
+    .lede {
+      max-width: 82mm;
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2mm;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 8mm;
+      padding: 1.7mm 3.1mm;
+      border-radius: 999px;
+      border: 1px solid rgba(21,34,43,0.08);
+      background: rgba(255,255,255,0.52);
+      font-size: 0.73rem;
+      font-weight: 600;
+    }
+
+    .chip.accent {
+      background: rgba(117,198,193,0.14);
+      border-color: rgba(47,127,122,0.16);
+      color: var(--sea-deep);
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 82mm;
+      padding-top: 5mm;
+    }
+
+    .hero-frame {
+      position: absolute;
+      inset: 0 0 0 4mm;
+      overflow: hidden;
+      border: 1px solid rgba(21,34,43,0.1);
+      border-radius: 10mm 10mm 2mm 10mm;
+      background:
+        linear-gradient(180deg, #edf2f4, #e3ecee);
+      box-shadow: 0 18px 34px rgba(21,34,43,0.08);
+    }
+
+    .hero-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4.5mm;
+    }
+
+    .floating-note {
+      position: absolute;
+      left: 0;
+      bottom: 6mm;
+      width: 31mm;
+      padding: 2.6mm 2.8mm;
+      border-radius: 6mm;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(21,34,43,0.1);
+      box-shadow: 0 14px 26px rgba(21,34,43,0.08);
+    }
+
+    .floating-note strong {
+      display: block;
+      margin-bottom: 1mm;
+      font-size: 0.76rem;
+      line-height: 1.3;
+    }
+
+    .floating-note span {
+      display: block;
+      color: var(--ink-soft);
+      font-size: 0.64rem;
+      line-height: 1.38;
+    }
+
+    .goal-band {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.4mm;
+    }
+
+    .goal {
+      padding: 2.9mm 3.1mm;
+      border-radius: 5mm;
+      background: linear-gradient(180deg, rgba(21,34,43,0.98), rgba(31,53,66,0.94));
+      color: var(--white);
+    }
+
+    .goal .mini-label {
+      display: block;
+      margin-bottom: 1.1mm;
+      color: rgba(255,255,255,0.66);
+    }
+
+    .goal strong {
+      display: block;
+      font-size: 0.81rem;
+      line-height: 1.28;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 64mm;
+      gap: 3.2mm;
+      min-height: 0;
+    }
+
+    .main,
+    .rail {
+      display: grid;
+      gap: 2.6mm;
+      align-content: start;
+      min-height: 0;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2.6mm;
+    }
+
+    .card,
+    .callout,
+    .mini-shot {
+      border: 1px solid rgba(21,34,43,0.08);
+      border-radius: 6mm;
+      background: rgba(255,255,255,0.76);
+      box-shadow: 0 12px 24px rgba(21,34,43,0.045);
+    }
+
+    .card,
+    .callout {
+      padding: 3.2mm;
+    }
+
+    .card h3,
+    .callout strong {
+      display: block;
+      margin-bottom: 1.2mm;
+      font-family: 'Fraunces', serif;
+      font-size: 1.08rem;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+    }
+
+    .card p,
+    .callout p,
+    .list li,
+    .steps li {
+      color: var(--ink-soft);
+      font-size: 0.74rem;
+      line-height: 1.35;
+    }
+
+    .list,
+    .steps {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 1.1mm;
+    }
+
+    .list li,
+    .steps li {
+      position: relative;
+    }
+
+    .list li {
+      padding-left: 3.8mm;
+    }
+
+    .list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.3mm;
+      width: 1.7mm;
+      height: 1.7mm;
+      border-radius: 50%;
+      background: var(--sea);
+    }
+
+    .steps {
+      counter-reset: step;
+    }
+
+    .steps li {
+      padding-left: 6.8mm;
+      min-height: 4.6mm;
+    }
+
+    .steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: grid;
+      place-items: center;
+      width: 4.4mm;
+      height: 4.4mm;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--white);
+      font-size: 0.58rem;
+      font-weight: 700;
+    }
+
+    .callout {
+      background: linear-gradient(180deg, rgba(117,198,193,0.14), rgba(255,255,255,0.82));
+      border-color: rgba(47,127,122,0.16);
+    }
+
+    .mini-shot {
+      overflow: hidden;
+      background: linear-gradient(180deg, #eef3f4, #e6edef);
+    }
+
+    .mini-shot img {
+      width: 100%;
+      height: auto;
+      padding: 2.6mm 2.6mm 1.2mm;
+    }
+
+    .mini-shot-copy {
+      padding: 0 3mm 3mm;
+    }
+
+    .mini-shot-copy strong {
+      display: block;
+      margin-bottom: 0.8mm;
+      font-size: 0.76rem;
+      line-height: 1.3;
+    }
+
+    .mini-shot-copy span {
+      display: block;
+      color: var(--ink-soft);
+      font-size: 0.66rem;
+      line-height: 1.32;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8mm 4mm;
+      align-items: center;
+      padding-top: 2.4mm;
+      border-top: 1px solid var(--line);
+      color: var(--ink-soft);
+      font-size: 0.72rem;
+    }
+
+    .contact strong {
+      color: var(--ink);
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4mm;
+      color: var(--ink-soft);
+      font-size: 0.62rem;
+    }
+
+    .footer span:last-child {
+      font-family: 'Azeret Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 10px;
+      }
+
+      .page {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+      }
+
+      .surface,
+      .hero,
+      .goal-band,
+      .content,
+      .split {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+      }
+
+      .title,
+      .lede {
+        max-width: none;
+      }
+
+      .hero-art {
+        min-height: 66mm;
+      }
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHTF6KV4Z5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-ZHTF6KV4Z5");
+    document.addEventListener("click", function(event) {
+      var link = event.target.closest && event.target.closest("a[href*='apps.apple.com/us/app/sittall-fix-your-posture']");
+      if (!link || typeof gtag !== "function") return;
+
+      var openInNewTab = link.target === "_blank" || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+      var eventSent = false;
+      var followLink = function() {
+        if (eventSent || openInNewTab) return;
+        eventSent = true;
+        window.location.href = link.href;
+      };
+
+      if (!openInNewTab) event.preventDefault();
+
+      gtag("event", "download_mac_click", {
+        link_url: link.href,
+        link_text: (link.getAttribute("aria-label") || link.textContent || "").trim(),
+        page_path: window.location.pathname,
+        page_title: document.title,
+        event_callback: followLink,
+        event_timeout: 1000
+      });
+
+      window.setTimeout(followLink, 1100);
+    });
+  </script>
+</head>
+<body>
+  <main class="page">
+    <div class="surface">
+      <header class="eyebrow">
+        <a href="/" class="brand" aria-label="Go to SitTall - Fix Your Posture home">
+          <img src="icon.png" alt="SitTall - Fix Your Posture app icon" width="42" height="42">
+          <div class="brand-copy">
+            <strong>SitTall - Fix Your Posture</strong>
+            <span>Influencer Brief</span>
+          </div>
+        </a>
+        <div class="meta">One-page outreach brief<br>April 2026</div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="label">Creator Outreach</span>
+          <h1 class="title">Your AirPods know when you <em>slouch</em>.</h1>
+          <div class="tagline">Privacy-first posture reminders for Mac</div>
+          <p class="lede">SitTall - Fix Your Posture is a posture reminder for Mac that uses supported AirPods to detect slouching and send gentle, real-time nudges. No camera. No account. No cloud.</p>
+          <div class="chip-row">
+            <span class="chip accent">Gifted first</span>
+            <span class="chip">Beta access planned</span>
+            <span class="chip">Launch support</span>
+            <span class="chip accent">Mac-native</span>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="hero-frame">
+            <img src="assets/screenshots/screenshot-menu-with-alert.png" alt="SitTall - Fix Your Posture menu bar and alert screenshot">
+          </div>
+          <div class="floating-note">
+            <strong>Easy creator story</strong>
+            <span>A simple product to show, explain, and post around.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="goal-band" aria-label="Project goals">
+        <article class="goal">
+          <span class="mini-label">Goal 1</span>
+          <strong>Spread awareness of SitTall - Fix Your Posture.</strong>
+        </article>
+        <article class="goal">
+          <span class="mini-label">Goal 2</span>
+          <strong>Increase downloads at launch.</strong>
+        </article>
+        <article class="goal">
+          <span class="mini-label">Goal 3</span>
+          <strong>Build creator relationships for future collabs.</strong>
+        </article>
+      </section>
+
+      <section class="content">
+        <div class="main">
+          <div class="split">
+            <article class="card">
+              <h3>Overview</h3>
+              <p>This outreach is for creators in productivity, Mac workflow, desk setup, remote work, tech lifestyle, and wellness. The aim is to introduce SitTall - Fix Your Posture early, support creators through beta and launch, and encourage authentic content around a real desk-work use case.</p>
+            </article>
+
+            <article class="card">
+              <h3>Why It Stands Out</h3>
+              <ul class="list">
+                <li>Uses supported AirPods instead of a camera.</li>
+                <li>Fits naturally into Mac and desk-setup content.</li>
+                <li>Clear privacy-first positioning.</li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="card">
+            <h3>Collaboration Flow</h3>
+            <ol class="steps">
+              <li>Reach out now and introduce the product.</li>
+              <li>Share early access codes once the beta is available.</li>
+              <li>Provide download codes again when the app launches.</li>
+              <li>Coordinate posting around release to support awareness and downloads.</li>
+            </ol>
+          </article>
+
+          <article class="callout">
+            <strong>Creator ask</strong>
+            <p>Try SitTall - Fix Your Posture, explore a content concept, and share launch content if it feels like a fit.</p>
+          </article>
+        </div>
+
+        <aside class="rail">
+          <article class="card">
+            <h3>Target Audience</h3>
+            <p>Creators in productivity, desk setup, Mac workflow, remote work, tech, and wellness, along with audiences who spend long hours at a desk and already use AirPods throughout the day.</p>
+          </article>
+
+          <article class="card">
+            <h3>Competitor Context</h3>
+            <p>Mac posture apps exist, but many rely on cameras or general reminders. SitTall - Fix Your Posture is positioned around a lighter, AirPods-based workflow that feels more natural for Mac users.</p>
+          </article>
+
+          <div class="mini-shot">
+            <img src="assets/screenshots/screenshot-notification.png" alt="SitTall - Fix Your Posture notification screenshot">
+            <div class="mini-shot-copy">
+              <strong>Ideal content moment</strong>
+              <span>The notification is the clearest proof point for creator content: simple, local, and instantly understandable.</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="contact">
+        <strong>Contact</strong> <a href="mailto:anillatici@gmail.com?subject=SitTall - Fix Your Posture%20Creator%20Collab">anillatici@gmail.com</a>
+        <strong>Store</strong> <a href="https://apps.apple.com/us/app/sittall-fix-your-posture/id6761648859?mt=12">Mac App Store</a>
+      </section>
+
+      <footer class="footer">
+        <span>SitTall - Fix Your Posture</span>
+        <span>AirPods-powered posture reminders for Mac</span>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>

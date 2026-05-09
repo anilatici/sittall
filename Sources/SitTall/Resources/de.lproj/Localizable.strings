@@ -1,0 +1,180 @@
+/* ==========================================================================
+   SitTall – English (Base) Localizable Strings
+
+   This file contains all user-facing strings in the app.
+   To add a new language, copy this file to {lang}.lproj/Localizable.strings
+   and translate the values (right side of '=').
+   ========================================================================== */
+
+
+// MARK: – Posture States
+
+"No AirPods detected" = "Keine AirPods erkannt";
+"Step 1: Set good posture" = "Schritt 1: Korrekte Haltung festlegen";
+"Step 2: Set bad posture" = "Schritt 2: Schlechte Haltung festlegen";
+"Good posture" = "Korrekte Haltung";
+"Watch your posture" = "Achte auf deine Haltung";
+"Fix your posture" = "Korrigiere deine Haltung";
+
+
+// MARK: – Motion Availability
+
+"Head motion unavailable" = "Kopfbewegung nicht verfügbar";
+"AirPods connected" = "AirPods verbunden";
+"Head motion could not be started on this Mac." = "Kopfbewegung konnte auf diesem Mac nicht gestartet werden.";
+"Connect supported AirPods with head motion to start posture monitoring." = "Verbinde deine unterstützten AirPods mit der Bewegungserkennung, um die Haltungsüberwachung zu starten.";
+"Ready to calibrate or monitor posture." = "Bereit zur Kalibrierung oder Überwachung der Haltung.";
+
+
+// MARK: – Calibration
+
+"Save Bad Posture" = "Schlechte Haltung speichern";
+"Save Good Posture" = "Korrekte Haltung speichern";
+"Recalibrate Posture" = "Haltung neu kalibrieren";
+"Sit tall with shoulders back, then save your good posture." = "Setze dich aufrecht hin, Schultern nach hinten, und speichere diese als korrekte Haltung.";
+"Now slouch or crane forward a bit, then save that as bad posture." = "Beuge dich nun etwas nach vorne oder lasse die Schultern hängen und speichere das als schlechte Haltung.";
+
+
+// MARK: – Monitoring Status
+
+"Put your AirPods on to resume monitoring." = "Setze deine AirPods auf, um die Überwachung fortzusetzen.";
+"Notifications are disabled. Enable them in System Settings to receive reminders." = "Benachrichtigungen sind deaktiviert. Aktiviere sie in den Systemeinstellungen, um Erinnerungen zu erhalten.";
+"Monitoring active" = "Überwachung aktiv";
+"Monitoring paused" = "Überwachung pausiert";
+"Monitoring stopped" = "Überwachung gestoppt";
+
+
+// MARK: – Menu Controls
+
+"Resume Monitoring" = "Überwachung fortsetzen";
+"Start Monitoring" = "Überwachung starten";
+"Settings…" = "Einstellungen…";
+"Quit SitTall - Fix Your Posture" = "SitTall beenden";
+"Notifications are off for SitTall in System Settings." = "Benachrichtigungen für SitTall sind in den Systemeinstellungen deaktiviert.";
+
+
+// MARK: – Deviation Gauge
+
+"Posture drift" = "Haltungsveränderung";
+"%lld° toward bad posture" = "%lld° Richtung schlechte Haltung";
+
+
+// MARK: – Daily Stats
+
+"Today's Score" = "Heutiger Score";
+"How scores are calculated" = "So wird der Score berechnet";
+"Slouches" = "Fehlhaltungen";
+"Fixes" = "Korrekturen";
+"Slouched" = "Zeit in schlechter Haltung";
+"Share Today's Stats" = "Heutige Statistik teilen";
+
+
+// MARK: – Share Summary
+
+"share.title" = "🧘 SitTall Tagesbericht";
+"share.healthScore %lld" = "Gesundheits-Score: %lld%%";
+"share.slouches %lld" = "Fehlhaltungen: %lld";
+"share.timeSlouched %@" = "Zeit in schlechter Haltung: %@";
+"share.corrections %lld" = "Korrekturen: %lld";
+"share.monitored %@" = "Überwacht: %@";
+
+
+// MARK: – Duration Formatting
+
+"%lldh %lldm" = "%lld Std. %lld Min.";
+"%lldm" = "%lld Min.";
+
+
+// MARK: – Notifications
+
+"Snooze 10 min" = "In 10 Min. erinnern";
+"Posture Alert" = "Haltungswarnung";
+"You've been in a bad position for a while. Sit up straight!" = "Du sitzt schon eine Weile in schlechter Haltung. Setz dich bitte aufrecht hin!";
+
+
+// MARK: – Authorization Status
+
+"Not requested" = "Nicht angefragt";
+"Denied" = "Abgelehnt";
+"Allowed" = "Erlaubt";
+"Provisional" = "Vorläufig";
+"Ephemeral" = "Temporär";
+"Unknown" = "Unbekannt";
+
+
+// MARK: – Settings: Detection
+
+"Sensitivity" = "Empfindlichkeit";
+"%lld° score" = "%lld° Score";
+"5°" = "5°";
+"30°" = "30°";
+"Alert when combined forward drift and side tilt rise above %lld° from your calibrated posture." = "Warnung, wenn Neigung nach vorne und seitliche Neigung zusammen mehr als %lld° von deiner kalibrierten Haltung abweichen.";
+"Alert after" = "Warnung nach";
+"15 seconds" = "15 Sekunden";
+"30 seconds" = "30 Sekunden";
+"1 minute" = "1 Minute";
+"2 minutes" = "2 Minuten";
+"Detection" = "Erkennung";
+
+
+// MARK: – Settings: Notifications
+
+"Remind me at most every" = "Erinnere mich höchstens alle";
+"5 minutes" = "5 Minuten";
+"10 minutes" = "10 Minuten";
+"15 minutes" = "15 Minuten";
+"Authorization" = "Berechtigung";
+"Notifications" = "Benachrichtigungen";
+
+
+// MARK: – Settings: General
+
+"Auto-start monitoring when AirPods connect" = "Überwachung automatisch starten, wenn AirPods verbunden werden";
+"Collect local diagnostics" = "Lokale Diagnosedaten sammeln";
+"Reset Calibration" = "Kalibrierung zurücksetzen";
+"Clear the saved baseline posture. You will need to calibrate again." = "Gespeicherte Ausgangshaltung löschen. Du musst danach neu kalibrieren.";
+"General" = "Allgemein";
+
+
+// MARK: – Settings: Diagnostics
+
+"Launches" = "App-Starts";
+"Calibrations" = "Kalibrierungen";
+"Alerts sent" = "Gesendete Warnungen";
+"Disconnects" = "Verbindungsabbrüche";
+"Unexpected exits" = "Unerwartete Abstürze";
+"Diagnostics" = "Diagnose";
+"Diagnostics stay on this Mac and are used only for troubleshooting and release validation." = "Diagnosedaten bleiben auf diesem Mac und werden nur zur Fehleranalyse und Qualitätssicherung verwendet.";
+
+
+// MARK: – Settings: How It Works
+
+"How It Works" = "So funktioniert es";
+"Health Score" = "Gesundheits-Score";
+"The percentage of your monitored time spent in good posture. 100% means no slouching at all. The score resets each day." = "Der Anteil der überwachten Zeit, den du in korrekter Haltung verbringst. 100 % bedeutet keine Fehlhaltung. Der Score wird täglich zurückgesetzt.";
+"Each time your posture drifts past the sensitivity threshold for longer than the alert delay, it counts as one slouch." = "Jedes Mal, wenn deine Haltung länger als die eingestellte Zeit über die Schwelle hinaus abweicht, zählt das als Fehlhaltung.";
+"Each time you correct back to good posture after a slouch is counted as a fix." = "Jede Rückkehr zu guter Haltung nach einer Fehlhaltung zählt als Korrektur.";
+"Time Slouched" = "Zeit in schlechter Haltung";
+"Total time spent in bad posture today." = "Gesamte Zeit heute in schlechter Haltung.";
+"Posture Drift" = "Haltungsabweichung";
+"Real-time gauge showing how far your head has tilted from your calibrated good posture, in degrees." = "Echtzeitanzeige, wie stark dein Kopf von der kalibrierten korrekten Haltung abweicht (in Grad).";
+"The degree threshold that triggers a slouch detection. Lower values are more sensitive." = "Gradschwelle für die Erkennung einer Fehlhaltung. Niedrigere Werte sind empfindlicher.";
+"Alert Delay" = "Verzögerung der Warnung";
+"How long you must be past the threshold before SitTall considers it a slouch and sends a notification." = "Wie lange du die Schwelle überschreiten musst, bevor SitTall eine Fehlhaltung erkennt und eine Benachrichtigung sendet.";
+"Calibration" = "Kalibrierung";
+"Save your good and bad posture so SitTall knows your personal range. Recalibrate any time your seating position changes." = "Speichere deine korrekte und schlechte Haltung, damit SitTall deinen persönlichen Bereich kennt. Kalibriere neu, wenn sich deine Sitzposition ändert.";
+
+
+// MARK: – Settings: About
+
+"Compatible devices" = "Kompatible Geräte";
+"AirPods Pro (gen 1/2/2 USB-C), AirPods (3rd gen+), AirPods Max" = "AirPods Pro (Gen 1/2/2 USB-C), AirPods (ab 3. Gen), AirPods Max";
+"Sensor" = "Sensor";
+"CMHeadphoneMotionManager: calibrated pitch, roll, and slow drift from the built-in IMU" = "CMHeadphoneMotionManager: kalibrierte Neigung (Pitch), Rotation (Roll) und langsame Drift vom integrierten IMU-Sensor";
+"Version" = "Version";
+"About" = "Über";
+
+
+// MARK: – Menu Bar
+
+"SitTall" = "SitTall";
